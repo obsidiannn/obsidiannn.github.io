@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="dadonggua"><title>Mysql 分页整理 · Drazen</title><meta name="description" content="轻量数据与大量数据的分页完全是两回事，如果没有很好地进行优化，很可能会导致性能的直线下降。现在对mysql分页做一个简单的小整理…
+
+
+最简单的分页select * from content order by id desc limit 0, 10
+
+当数据量多了一些的时候：select * fro"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/China.png"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/">首页</a></li><li> <a href="/archives">归档</a></li><li> <a href="/tags">标签</a></li><li> <a href="/about">关于</a></li><li> <a href="/links">友链</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li></div><div class="avatar"><img src="/images/20410907.jpg"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/20410907.jpg" style="width:200px;" alt="favicon"><h3 title=""><a href="/">Drazen</a></h3><div class="description"><p>dadonggua blog</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/dadonggua93"><i class="fa fa-github"></i></a></li><li><a href="mailto:drazen08@163.com"><i class="fa fa-envelope"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span> 全站CC-BY-SA-3.0 </span><i class="fa fa-star"></i><span> dadonggua</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><span>Anatolo </span></div><div class="beian"></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Mysql 分页整理</a></h3></div><div class="post-content"><p><blockquote>
+<p>轻量数据与大量数据的分页完全是两回事，如果没有很好地进行优化，很可能会导致性能的直线下降。现在对mysql分页做一个简单的小整理…</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="最简单的分页"><a href="#最简单的分页" class="headerlink" title="最简单的分页"></a>最简单的分页</h2><pre><code>select * from content order by id desc limit 0, 10
+</code></pre>
+<h2 id="当数据量多了一些的时候："><a href="#当数据量多了一些的时候：" class="headerlink" title="当数据量多了一些的时候："></a>当数据量多了一些的时候：</h2><pre><code>select * from content order by id desc limit 1000000, 10
+</code></pre>
+<p>当数据量比较大的时候，这样分页的方案会导致最后几页的查询速度下降。</p>
+<h4 id="所以"><a href="#所以" class="headerlink" title="所以"></a>所以</h4><pre><code>SELECT * FROM table WHERE id &gt;= (SELECT id FROM table
+  LIMIT 1000000, 1) LIMIT 10;
+</code></pre>
+<p>  因为id是拥有索引的主键，所以，效率会比纯limit高一些</p>
+<h3 id="什么是更优解？"><a href="#什么是更优解？" class="headerlink" title="什么是更优解？"></a>什么是更优解？</h3><pre><code>SELECT * FROM table WHERE id BETWEEN 1000000 AND 1000010;
+</code></pre>
+<h4 id="另："><a href="#另：" class="headerlink" title="另："></a>另：</h4><p>如果找寻的id并不连续，可以先找出id，再用<code>in</code>的方式查询：</p>
+<pre><code>SELECT * FROM table WHERE id IN(10000, 100000, 1000000...);
+</code></pre>
+<h2 id="另一种方式：-FOUND-ROWS"><a href="#另一种方式：-FOUND-ROWS" class="headerlink" title="另一种方式： FOUND_ROWS()"></a>另一种方式： FOUND_ROWS()</h2><blockquote>
+<p>使用MySql中的函数FOUND_ROWS()，在SELECT中可以得到两个结果：</p>
+</blockquote>
+<ol>
+<li>得到Limit的内容</li>
+<li>得到去除Limit以后所有行数</li>
+</ol>
+<p>SELECT语句中经常可能用<code>LIMIT</code>限制返回行数。有时候可能想要知道如果没有LIMIT会返回多少行，但又不想再执行一次相同语句。那么，在SELECT查询中包含<code>SQL_CALC_FOUND_ROWS</code>选项，然后执行<code>FOUND_ROWS()</code>就可以了：</p>
+<pre><code>select SQL_CALC_FOUND_ROWS * FROM tbl_name WHERE id &gt; 100 LIMIT 10;
+SELECT FOUND_ROWS();
+</code></pre>
+<ul>
+<li>如果在前一条语句中使用SQL_CALC_FOUND_ROWS选项，FOUND_ROWS()将返回第一条语句没有LIMIT时返回的行数。</li>
+<li>如果在前一条语句中没有使用SQL_CALC_FOUND_ROWS选项，FOUND_ROWS()将返回前一条语句实际返回的行数。</li>
+<li>如果使用 SELECT SQL_CALC_FOUND_ROWS，MySQL必须计算所有结果集的行数。尽管这样，总比再执行一次不使用LIMIT的查询要快多了吧，因为那样结果集要返回客户端滴。（另外：应该不单是没有将结果集返回的原因，还有原因可能是比如LIKE之类比较费劲的SQL不需要再去劳累一次。）</li>
+</ul>
+<hr>
+<p>– 注意下面语句中的条件 LIKE</p>
+<pre><code>SELECT SQL_CALC_FOUND_ROWS * FROM tbl_name WHERE Name LIKE ‘%string%’ id &gt; 100 LIMIT 10;
+SELECT FOUND_ROWS();
+</code></pre>
+<p>– 上面语句等价于下面语句，但性能方面应该提升非常非常的明显：</p>
+<pre><code>SELECT COUNT(*) FROM tbl_name WHERE Name LIKE ‘%string%’ ;
+SELECT * FROM tbl_name WHERE Name LIKE ‘%string%’ id &gt; 100 LIMIT 10;
+</code></pre>
+</p><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: dadonggua</div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-04-10</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Mysql/" title="Mysql">Mysql </a><span class="leancloud_visitors"></span><span>大约633个字, 2分钟6秒读完</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,http://dadonggua.top/2018/04/10/08mysql_page/,Drazen,Mysql 分页整理,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2018/06/03/09cas/" title="Cas 单点登录相关">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2018/04/07/06annotation/" title="自定义注解及拓展">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>

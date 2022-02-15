@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="dadonggua"><title>Bean 生命周期 · Drazen</title><meta name="description" content="Spring Bean 的生命周期在面试中被问到不止一次了，每次结结巴巴的说出来好没面子呀~
+
+
+Spring Bean 作用域、生命周期Bean的作用域
+Spring 3中为Bean定义了5中作用域，分别为singleton（单例）、prototype（原型）、request、session和gl"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/China.png"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/">首页</a></li><li> <a href="/archives">归档</a></li><li> <a href="/tags">标签</a></li><li> <a href="/about">关于</a></li><li> <a href="/links">友链</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li></div><div class="avatar"><img src="/images/20410907.jpg"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/20410907.jpg" style="width:200px;" alt="favicon"><h3 title=""><a href="/">Drazen</a></h3><div class="description"><p>dadonggua blog</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/dadonggua93"><i class="fa fa-github"></i></a></li><li><a href="mailto:drazen08@163.com"><i class="fa fa-envelope"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span> 全站CC-BY-SA-3.0 </span><i class="fa fa-star"></i><span> dadonggua</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><span>Anatolo </span></div><div class="beian"></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Bean 生命周期</a></h3></div><div class="post-content"><p><blockquote>
+<p>Spring Bean 的生命周期在面试中被问到不止一次了，每次结结巴巴的说出来好没面子呀~</p>
+</blockquote>
+<span id="more"></span>
+<h1 id="Spring-Bean-作用域、生命周期"><a href="#Spring-Bean-作用域、生命周期" class="headerlink" title="Spring Bean 作用域、生命周期"></a>Spring Bean 作用域、生命周期</h1><h3 id="Bean的作用域"><a href="#Bean的作用域" class="headerlink" title="Bean的作用域"></a>Bean的作用域</h3><ul>
+<li><p>Spring 3中为Bean定义了5中作用域，分别为<code>singleton（单例）</code>、<code>prototype（原型）</code>、<code>request</code>、<code>session</code>和<code>global session</code>，5种作用域说明如下：</p>
+<ul>
+<li><strong>singleton：单例模式</strong>，Spring IoC容器中只会存在一个共享的Bean实例，无论有多少个Bean引用它，始终指向同一对象。Singleton作用域是Spring中的缺省（默认）作用域，也可以显示的将Bean定义为singleton模式，配置为：</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;userDao&quot; class=&quot;com.ioc.UserDaoImpl&quot; scope=&quot;singleton&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>prototype:原型模式</strong>，每次通过Spring容器获取prototype定义的bean时，容器都将创建一个新的Bean实例，每个Bean实例都有自己的属性和状态，而singleton全局只有一个对象。根据经验，对有状态的bean使用prototype作用域，而对无状态的bean使用singleton作用域。</p>
+</li>
+<li><p><strong>request</strong>：在一次Http请求中，容器会返回该Bean的同一实例。而对不同的Http请求则会产生新的Bean，而且该bean仅在当前Http Request内有效。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;loginAction&quot; class=&quot;com.cnblogs.Login&quot; scope=&quot;request&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p>针对每一次Http请求，Spring容器根据该bean的定义创建一个全新的实例，且该实例仅在当前Http请求内有效，而其它请求无法看到当前请求中状态的变化，当当前Http请求结束，该bean实例也将会被销毁。</p>
+</li>
+<li><p><strong>session</strong>：在一次Http Session中，容器会返回该Bean的同一实例。而对不同的Session请求则会创建新的实例，该bean实例仅在当前Session内有效。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;userPreference&quot; class=&quot;com.ioc.UserPreference&quot; scope=&quot;session&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p>同Http请求相同，每一次session请求创建新的实例，而不同的实例之间不共享属性，且实例仅在自己的session请求内有效，请求结束，则实例将被销毁。</p>
+</li>
+<li><p><strong>global Session</strong>：在一个全局的Http Session中，容器会返回该Bean的同一个实例，仅在使用portlet context时有效。</p>
+</li>
+</ul>
+<h3 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h3><ul>
+<li><p>Spring容器可以管理singleton作用域下Bean的生命周期，在此作用域下，Spring能够精确地知道Bean何时被创建，何时初始化完成，以及何时被销毁。</p>
+</li>
+<li><p>对于prototype作用域的Bean，Spring只负责创建，当容器创建了Bean的实例后，Bean的实例就交给了客户端的代码管理，Spring容器将不再跟踪其生命周期，并且不会管理那些被配置成prototype作用域的Bean的生命周期</p>
+</li>
+</ul>
+<h3 id="Bean的生命周期："><a href="#Bean的生命周期：" class="headerlink" title="Bean的生命周期："></a>Bean的生命周期：</h3><p> 1、实例化一个Bean－－也就是我们常说的<code>new</code></p>
+<p> 2、按照Spring上下文对实例化的Bean进行配置－－也就是IOC注入；</p>
+<p> 3、如果这个Bean已经实现了<code>BeanNameAware</code>接口，会调用它实现的<code>setBeanName(String)</code>方法，此处传递的就是Spring配置文件中Bean的id值</p>
+<p> 4、如果这个Bean已经实现了<code>BeanFactoryAware</code>接口，会调用它实现的setBeanFactory(setBeanFactory(BeanFactory)传递的是Spring工厂自身（可以用这个方式来获取其它Bean，只需在Spring配置文件中配置一个普通的Bean就可以）；</p>
+<p> 5、如果这个Bean已经实现了<code>ApplicationContextAware</code>接口，会调用<code>setApplicationContext(ApplicationContext)</code>方法，传入Spring上下文（同样这个方式也可以实现步骤4的内容，但比4更好，因为ApplicationContext是BeanFactory的子接口，有更多的实现方法）；</p>
+<p> 6、如果这个Bean关联了<code>BeanPostProcessor</code>接口，将会调用<code>postProcessBeforeInitialization(Object obj, String s)</code>方法，BeanPostProcessor经常被用作是Bean内容的更改，并且由于这个是在Bean初始化结束时调用那个的方法，也可以被应用于内存或缓存技术；主要是我们如果需要在spring中增加自己的逻辑</p>
+<p> 7、如果Bean在Spring配置文件中配置了<code>init-method</code>属性会自动调用其配置的初始化方法。</p>
+<p> 8、如果这个Bean关联了BeanPostProcessor接口，将会调用postProcessAfterInitialization(Object obj, String s)方法；</p>
+<p> 注：以上工作完成以后就可以应用这个Bean了，那这个Bean是一个Singleton的，所以一般情况下我们调用同一个id的Bean会是在内容地址相同的实例，当然在Spring配置文件中也可以配置非Singleton，这里我们不做赘述。</p>
+<p> 9、当Bean不再需要时，会经过清理阶段，如果Bean实现了DisposableBean这个接口，会调用那个其实现的destroy()方法；</p>
+<p> 10、最后，如果这个Bean的Spring配置中配置了destroy-method属性，会自动调用其配置的销毁方法。</p>
+</p><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: dadonggua</div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-04-07</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Java/" title="Java">Java </a><a class="tag" href="/tags/Spring/" title="Spring">Spring </a><span class="leancloud_visitors"></span><span>大约1310个字, 4分钟22秒读完</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,http://dadonggua.top/2018/04/07/07LifeBean/,Drazen,Bean 生命周期,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2018/04/07/06annotation/" title="自定义注解及拓展">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2017/11/07/05linux_oracle/" title="Linux 下oracle的数据恢复以及数据库命令行安装">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>

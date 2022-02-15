@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="dadonggua"><title>Linux 下oracle的数据恢复以及数据库命令行安装 · Drazen</title><meta name="description" content="由于项目在运行过程中所需的空间越来越大，最终Linux的表分区使用比例达到了100%，导致项目无法正常登录以及无法正常访问数据库，原因主要是表空间过大。在备份了dbf文件后之后，由于操作有误，误删了oracle的一个redo日志，于是不得不重装oracle
+
+
+因为表空间主要存储的都是用户上传的文件"><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/China.png"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/">首页</a></li><li> <a href="/archives">归档</a></li><li> <a href="/tags">标签</a></li><li> <a href="/about">关于</a></li><li> <a href="/links">友链</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li></div><div class="avatar"><img src="/images/20410907.jpg"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/20410907.jpg" style="width:200px;" alt="favicon"><h3 title=""><a href="/">Drazen</a></h3><div class="description"><p>dadonggua blog</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/dadonggua93"><i class="fa fa-github"></i></a></li><li><a href="mailto:drazen08@163.com"><i class="fa fa-envelope"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span> 全站CC-BY-SA-3.0 </span><i class="fa fa-star"></i><span> dadonggua</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><span>Anatolo </span></div><div class="beian"></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>Linux 下oracle的数据恢复以及数据库命令行安装</a></h3></div><div class="post-content"><p><blockquote>
+<p>由于项目在运行过程中所需的空间越来越大，最终Linux的表分区使用比例达到了100%，导致项目无法正常登录以及无法正常访问数据库，原因主要是表空间过大。在备份了dbf文件后之后，由于操作有误，误删了oracle的一个redo日志，于是不得不重装oracle</p>
+</blockquote>
+<blockquote>
+<p>因为表空间主要存储的都是用户上传的文件数据，所以必须恢复</p>
+</blockquote>
+<span id="more"></span>
+
+
+<p><strong>ps: 因为服务器上相关的配置文件都配置过一遍，所以不用重新配置</strong></p>
+<h2 id="1-把dbf文件通过恢复工具导入到测试环境"><a href="#1-把dbf文件通过恢复工具导入到测试环境" class="headerlink" title="1. 把dbf文件通过恢复工具导入到测试环境"></a>1. 把dbf文件通过恢复工具导入到测试环境</h2><p><strong>在网上找了好多数据库恢复的软件，但都是收费的</strong>…QAQ</p>
+<p>最后选择一个叫<code>odu</code>的工具，非图形化界面，需要注意的是配置文件的格式需要规范一点，具体的操作步骤可以看：</p>
+<p><a target="_blank" rel="noopener" href="http://www.laoxiong.net/odu">老熊的博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Drazen08/Drazen08.github.io/tree/master/files/odu_309_win32.zip">再贴一个odu的下载</a></p>
+<p>总之经过一番操作之后终于把数据跑到自己电脑上了，随后我们要进行的是linux在oracle的命令行安装。</p>
+<h2 id="2-oracle-静默安装"><a href="#2-oracle-静默安装" class="headerlink" title="2. oracle 静默安装"></a>2. oracle 静默安装</h2><blockquote>
+<blockquote>
+<p>由于这个项目的运行环境是内网环境，所以一些yum什么的工具都暂时用不了，当时也没有什么时间去鼓捣图形化之类的东西了，就试着用xshell进行了命令行安装。</p>
+</blockquote>
+</blockquote>
+<h4 id="a-下载oracle-for-linux-的zip安装包"><a href="#a-下载oracle-for-linux-的zip安装包" class="headerlink" title="a. 下载oracle for linux 的zip安装包"></a>a. 下载oracle for linux 的zip安装包</h4><p>上传到机器上并解压，要注意文件的权限不能是<code>root</code>，应该是<code>oracle</code>，也就是用作数据库的权限账号</p>
+<h4 id="b-使用oracle用户登录并解压到一个目录下-unzip-filename"><a href="#b-使用oracle用户登录并解压到一个目录下-unzip-filename" class="headerlink" title="b. 使用oracle用户登录并解压到一个目录下 unzip filename"></a>b. 使用oracle用户登录并解压到一个目录下 <code>unzip filename</code></h4><h4 id="c-解压完之后会有一个database目录"><a href="#c-解压完之后会有一个database目录" class="headerlink" title="c. 解压完之后会有一个database目录"></a>c. 解压完之后会有一个<code>database</code>目录</h4><p>我们要找到<code>/oracle/database/response</code>下的三个<code>.rsp</code> 文件，复制到<code>/home/oracle</code>里面，并在这里做一些修改。</p>
+<p><strong>首先</strong> 是<code>db_install.rsp</code>,这里的改动需要仔细，如果配置错误的话就会报错。</p>
+<p><a target="_blank" rel="noopener" href="http://loofeer.blog.51cto.com/707932/1119713">静默安装_db-install.rsp 配置</a></p>
+<p>接下来是<code>dbca.rsp</code>和<code>netca.rsp</code></p>
+<h4 id="dbca-rsp"><a href="#dbca-rsp" class="headerlink" title="dbca.rsp"></a><code>dbca.rsp</code></h4><p>vi dbca.rsp 修改以下内容</p>
+<p>GDBNAME &#x3D; “ora11g”</p>
+<p>SID &#x3D; “ora11g”</p>
+<p>SYSPASSWORD &#x3D; “oracle11”</p>
+<p>SYSTEMPASSWORD &#x3D; “oracle11”</p>
+<h4 id="netca-rsp"><a href="#netca-rsp" class="headerlink" title="netca.rsp"></a><code>netca.rsp</code></h4><p>vi netca.rsp修改以下内容</p>
+<p>INSTALL_TYPE&#x3D;””custom””</p>
+<p>配置完之后进入<code>database</code>目录下，执行脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./runInstaller -silent -responseFile /home/oracle/db_install.rsp</span><br></pre></td></tr></table></figure>
+<p>如果一切顺利的话，会提示你<code>the setup completed</code> 之类的，而且会提示你运行两个文件，<strong>注意:</strong> 这两个文件需要用<code>root</code>用户运行。</p>
+<p>运行完成后，可能要退回oracle 的主目录刷新一下<code>.bash_profile</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bash_profile</span><br></pre></td></tr></table></figure>
+<p>成功后就可以看到登录信息里有自己的sid了，这个时候就是常规操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">创建数据库 dbca -silent -cloneTemplate -responseFile ./dbca.rsp</span><br><span class="line"></span><br><span class="line">创建监听 netca /silent /responseFile /home/oracle/netca.rsp</span><br><span class="line"></span><br><span class="line">开启oracle监听 lsnrctl start</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-创建oracle-实例"><a href="#3-创建oracle-实例" class="headerlink" title="3 创建oracle 实例"></a>3 创建oracle 实例</h2><blockquote>
+<p>安装好oracle 之后是没有oracle实例的，需要自己去建</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="http://blog.csdn.net/Trigl/article/details/53101888">创建oracle实例（没错我在偷懒）</a></p>
+<p>总之最后很幸运的没有丢数据，我们一定要做好的是备份！备份！备份！</p>
+</p><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: dadonggua</div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2017-11-07</span><i class="fa fa-tag"></i><a class="tag" href="/tags/Linux/" title="Linux">Linux </a><a class="tag" href="/tags/Oracle/" title="Oracle">Oracle </a><span class="leancloud_visitors"></span><span>大约831个字, 2分钟46秒读完</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,http://dadonggua.top/2017/11/07/05linux_oracle/,Drazen,Linux 下oracle的数据恢复以及数据库命令行安装,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2018/04/07/07LifeBean/" title="Bean 生命周期">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2017/07/07/04Quartz/" title="Quartz实现定时任务">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>

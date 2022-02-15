@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="dadonggua"><title>prometheus 划水 · Drazen</title><meta name="description" content="入职了新公司，需要我去了解prometheus，记录一下prometheus 的心得，不定期更新
+
+
+
+先挂官网 https://prometheus.io
+比较重要的点：
+创建prometheus 服务及配置
+remote read &amp;amp; remote write
+remote read ("><meta name="keywords" content="Blog,博客,Hexo"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="shortcut icon" type="image/x-icon" href="/images/China.png"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/insight.css"><link rel="stylesheet" href="/css/search.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><script src="/js/jquery.js"></script><meta name="generator" content="Hexo 6.0.0"></head><body><div class="page-top animated fadeInDown"><div class="nav"><li> <a href="/">首页</a></li><li> <a href="/archives">归档</a></li><li> <a href="/tags">标签</a></li><li> <a href="/about">关于</a></li><li> <a href="/links">友链</a></li></div><div class="information"><div class="nav_right_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li><li><a class="fa fa-search" onclick="openWindow();"></a></li></div><div class="avatar"><img src="/images/20410907.jpg"></div></div></div><div class="sidebar animated fadeInDown"><div class="sidebar-top"><div class="logo-title"><div class="title"><img src="/images/20410907.jpg" style="width:200px;" alt="favicon"><h3 title=""><a href="/">Drazen</a></h3><div class="description"><p>dadonggua blog</p></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://github.com/dadonggua93"><i class="fa fa-github"></i></a></li><li><a href="mailto:drazen08@163.com"><i class="fa fa-envelope"></i></a></li></ul></div></div><div class="footer"><div class="p"> <span> 全站CC-BY-SA-3.0 </span><i class="fa fa-star"></i><span> dadonggua</span></div><div class="by_farbox"><span>Powered by </span><a href="https://hexo.io/zh-cn/" target="_blank">Hexo </a><span> & </span><span>Anatolo </span></div><div class="beian"></div></div></div><div class="main"><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>prometheus 划水</a></h3></div><div class="post-content"><p><blockquote>
+<p>入职了新公司，需要我去了解prometheus，记录一下prometheus 的心得，不定期更新</p>
+</blockquote>
+<span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://prometheus.io/">先挂官网 https://prometheus.io</a></p>
+<h3 id="比较重要的点："><a href="#比较重要的点：" class="headerlink" title="比较重要的点："></a>比较重要的点：</h3><ul>
+<li>创建prometheus 服务及配置</li>
+<li>remote read &amp; remote write<ul>
+<li>remote read (write) 思考 以及一些小坑</li>
+<li>如何获取remote write 消息，并把它转成可以使用的数据</li>
+<li>remote write 持久化指标数据至influx db</li>
+</ul>
+</li>
+<li>PushGateway &amp; push clint (这里贴java client)</li>
+<li>exporter 相关：snmp,node,StatsD等…</li>
+<li>alertmanager 配置</li>
+<li>k8s 部署prometheus 集群</li>
+</ul>
+<h2 id="1-创建prometheus服务"><a href="#1-创建prometheus服务" class="headerlink" title="1. 创建prometheus服务"></a>1. 创建prometheus服务</h2><blockquote>
+<p>网上有现成的，不想写…</p>
+</blockquote>
+<h2 id="2-remote-read-amp-remote-write"><a href="#2-remote-read-amp-remote-write" class="headerlink" title="2. remote_read &amp; remote_write"></a>2. remote_read &amp; remote_write</h2><blockquote>
+<p>prometheus 提供了两个功能，用于监控指标的数据拉取以及存储</p>
+</blockquote>
+<h3 id="a-remote-read-write-思考"><a href="#a-remote-read-write-思考" class="headerlink" title="a.remote read (write) 思考"></a>a.remote read (write) 思考</h3><ul>
+<li>注意：<ul>
+<li><code>remote_read</code> 必须置于顶层，且<code>read_recent</code> 应当为true</li>
+</ul>
+<ul>
+<li><code>remote_read</code> 可以配置<code>prometheus server </code>,也可以配置 influxdb （1.7+）</li>
+</ul>
+<ul>
+<li><code>remote_write</code> 可以配置 自己的<code>prometheus remote adapter</code>,也可以配置 1.7版本以上的influxdb</li>
+</ul>
+</li>
+</ul>
+<p><strong>如何配置 remote_read</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">remote_read:</span><br><span class="line">  - url: http://host:9090/api/v1/read</span><br><span class="line">    read_recent: true</span><br><span class="line">remote_write:</span><br><span class="line">  - url: http://host:port/xx</span><br></pre></td></tr></table></figure>
+
+<p><strong>思考 ：</strong><br>  根据<code>remote_read</code> 进行读写分离，即A prometheus服务进行读，不负责写，B prometheus 负责写，不负责读。<br>且读prometheus 会产生本地数据，可以手动设置清除频率高一点</p>
+<h3 id="b-如何获取remote-write-消息，并把它转成可以使用的数据"><a href="#b-如何获取remote-write-消息，并把它转成可以使用的数据" class="headerlink" title="b.如何获取remote write 消息，并把它转成可以使用的数据"></a>b.如何获取remote write 消息，并把它转成可以使用的数据</h3><blockquote>
+<p>首先,prometheus自身的remote_write 数据格式其实并不通用————<code>application/x-protobuf</code>，而且官方并没有给出基于java的适配器(adapter)————大多数是用go语言写的，所以假如是想二次开发什么的就多了一些成本…</p>
+</blockquote>
+<ul>
+<li>首先你可以滚去学go语言…</li>
+<li>或者自己实现一套java版本的adapter ———— <a target="_blank" rel="noopener" href="http://sunjx93.top/2019/06/10/prometheus%20%E7%9A%84remote%20write/">记获取prometheus remote_write 踩坑记</a></li>
+</ul>
+<h4 id="influxdb"><a href="#influxdb" class="headerlink" title="influxdb"></a>influxdb</h4><blockquote>
+<p>记一个influxdb 坑</p>
+</blockquote>
+<h3 id="pushgate-way"><a href="#pushgate-way" class="headerlink" title="pushgate way"></a>pushgate way</h3><blockquote>
+<p> push gate way 推送到固定地址 ，最后由prometheus 收集<br>该操作需要有自己的PushGateWay 节点,PushGateway 相当于一个prometheus 的缓存buffer</p>
+</blockquote>
+<h4 id="java-client"><a href="#java-client" class="headerlink" title="java client"></a>java client</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CollectorRegistry registry = new CollectorRegistry();</span><br><span class="line">Gauge duration = Gauge.build()</span><br><span class="line">        .name(&quot;my_batch_job_duration_seconds&quot;).help(&quot;Duration of my batch job in seconds.&quot;).register(registry);</span><br><span class="line">Gauge.Timer durationTimer = duration.startTimer();</span><br><span class="line">try &#123;</span><br><span class="line">    // Your code here.</span><br><span class="line"></span><br><span class="line">    // This is only added to the registry after success,</span><br><span class="line">    // so that a previous success in the Pushgateway isn&#x27;t overwritten on failure.</span><br><span class="line">    Gauge lastSuccess = Gauge.build()</span><br><span class="line">            .name(&quot;my_batch_job_last_success&quot;).help(&quot;Last time my batch job succeeded, in unixtime.&quot;).register(registry);</span><br><span class="line">    lastSuccess.setToCurrentTime();</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    durationTimer.setDuration();</span><br><span class="line">    PushGateway pg = new PushGateway(&quot;39.96.11.112:9091&quot;);</span><br><span class="line">    pg.pushAdd(registry, &quot;my_batch_job&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="SNMP-Exporter"><a href="#SNMP-Exporter" class="headerlink" title="SNMP Exporter"></a>SNMP Exporter</h3><p><a target="_blank" rel="noopener" href="https://github.com/prometheus/snmp_exporter">prometheus 官方 snmp_exporter</a></p>
+<h4 id="1-如何使用"><a href="#1-如何使用" class="headerlink" title="1.如何使用"></a>1.如何使用</h4><ul>
+<li>找到官方github地址</li>
+<li>clone到服务器本地</li>
+<li>下载snmp exporter 官方提供的release包,如<code>tar.gz</code> 格式</li>
+<li>解压下载好的包放到已经clone好的本地目录中</li>
+<li>执行docker build命令</li>
+<li>成功创建镜像</li>
+<li>对带监控机器开启snmp协议</li>
+</ul>
+<h4 id="2-snmp"><a href="#2-snmp" class="headerlink" title="2.snmp"></a>2.snmp</h4><p><code>http://host:9116/snmp?target=1.2.3.4&amp;module=if_mib</code> 疑似修改配置文件</p>
+<h3 id="Alert-Manager"><a href="#Alert-Manager" class="headerlink" title="Alert Manager"></a>Alert Manager</h3><blockquote>
+<p>Alertmanager can reload its configuration at runtime. If the new configuration is not well-formed, the changes will not be applied and an error is logged.</p>
+</blockquote>
+<ul>
+<li>alertmanager 在运行时可以加载配置 ，若新的配置不正确，则仍运行上一个版本的配置，且报告错误</li>
+</ul>
+<h4 id="保存历史指标数据"><a href="#保存历史指标数据" class="headerlink" title="保存历史指标数据"></a>保存历史指标数据</h4><ul>
+<li><code>--storage.tsdb.path</code>, Defaults to <code>data/</code></li>
+<li><code>--storage.tsdb.retention.time</code> ,保存几天的历史数据， Defaults to <code>15d</code></li>
+<li><code>--storage.tsdb.retention.size</code> max 存量，实验性质的配置</li>
+<li><code>--storage.tsdb.retention</code></li>
+</ul>
+</p><div class="tip">本文采用CC-BY-SA-3.0协议，转载请注明出处<br>作者: dadonggua</div></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2019-05-10</span><i class="fa fa-tag"></i><a class="tag" href="/tags/prometheus/" title="prometheus">prometheus </a><span class="leancloud_visitors"></span><span>大约830个字, 2分钟46秒读完</span></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="" onclick="javascript:join_favorite()" ref="sidebar"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,http://dadonggua.top/2019/05/10/12prometheus/,Drazen,prometheus 划水,;"></a></div></div><div class="pagination"><ul class="clearfix"><li class="pre pagbuttons"><a class="btn" role="navigation" href="/2019/06/05/13etcd-install/" title="etcd 集群的部署">上一篇</a></li><li class="next pagbuttons"><a class="btn" role="navigation" href="/2019/04/26/11docker/" title="docker 非专业记录">下一篇</a></li></ul></div><script src="/js/visitors.js"></script></div></div></div></div><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script><script src="/js/add-bookmark.js"></script><script>(function(window){var INSIGHT_CONFIG={TRANSLATION:{POSTS:"文章",PAGES:"页面",CATEGORIES:"分类",TAGS:"标签",UNTITLED:"(无标题)",},CONTENT_URL:"/content.json",};window.INSIGHT_CONFIG=INSIGHT_CONFIG})(window);</script><script src="/js/insight.js" defer></script><div class="searchbox ins-search"><div class="searchbox-container ins-search-container"><div class="searchbox-input-wrapper"><input class="searchbox-input ins-search-input" type="text" placeholder="想要查找什么..."><span class="searchbox-close"><a class="fa fa-times-circle" onclick="closeWindow();"></a></span></div><div class="searchbox-result-wrapper ins-section-wrapper"><div class="ins-section-container"><p>Seraching...</p></div></div></div></div></body></html>
