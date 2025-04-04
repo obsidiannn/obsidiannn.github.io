@@ -110,150 +110,707 @@
 
 
 <body>
-	@require '../common/variables'
+	<div class="progress-bar-container">
+	
 
-.page-title-header
-  font-size 3.2rem
-  line-height 1
-  font-weight bold
-  color var(--second-text-color)
-  margin 6px 0 36px 0
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
 
-.page-container
-  position relative
-  box-sizing border-box
-  width 100%
-  height auto
-  background var(--background-color)
+<main class="page-container" id="swup">
 
-  +redefine-tablet()
-    padding-right 0 !important
+	
 
-  .main-content-container
-    padding-top $navbar-height
-    position relative
-    transition padding 0.2s ease
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                obsidiannn
+                
+            </a>
+        </div>
 
-    .navbar-shrink &
-      padding-top $navbar-shrink-height
-      transition padding 0.2s ease
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
 
-      +redefine-tablet()
-        padding-top: ($navbar-shrink-height * 0.9)
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
 
-      +redefine-mobile()
-        padding-top: $navbar-shrink-height * 0.8
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
 
-    +redefine-tablet()
-      padding-top: $navbar-height * 0.9
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
 
-    +redefine-mobile()
-      padding-top: $navbar-height * 0.8
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
 
-    .main-content-header
-      position fixed
-      top 0
-      right 0
-      width 100%
-      height $navbar-height
-      z-index $z-index-5
-      box-sizing border-box
-      transition-t('transform, padding-left, height', '0, 0, 0', '0.3, 0.2, 0.2', 'ease-out, linear, ease')
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    TAGS
+                                    
+                                </a>
 
-      &.hide
-        transform translateY(-105%)
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
 
-      .navbar-shrink &
-        height $navbar-shrink-height
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
 
-        +redefine-tablet()
-          height: ($navbar-shrink-height * 0.9)
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/obsidiannn">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        +redefine-mobile()
-          height: $navbar-shrink-height * 0.8
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
 
-      +redefine-tablet()
-        height: $navbar-height * 0.9
-        padding-left 0 !important
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-      +redefine-mobile()
-        height: $navbar-height * 0.8
+                        
+                    </li>
+            
+                
+                    
 
-    .main-content-body
-      box-sizing border-box
-      width 100%
-      display flex
-      justify-content center
-      padding $spacing-unit 0
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-      +redefine-tablet()
-        padding ($spacing-unit * 0.8) 0
+                        
+                    </li>
+            
+                
+                    
 
-      +redefine-mobile()
-        border none !important
-        padding-top 0
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags"
+                        >
+                            <span>
+                                TAGS
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-      .main-content
-        position relative
-        box-sizing border-box
-        width $main-content-width
-        max-width $content-max-width
-        height 100%
-        transition-t('max-width, width', '0, 0', '0.2, 0.2', 'ease, ease')
+                        
+                    </li>
+            
+                
+                    
 
-        +redefine-tablet()
-          width $main-content-width-tablet
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
 
-        +redefine-mobile()
-          width $main-content-width-mobile
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/obsidiannn">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
 
-        &.has-toc
-          max-width $has-toc-content-max-width !important
+            
+            
+        </ul>
 
-      .main-content-footer
-        width 100%
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
 
-  .post-tools
-    position fixed
-    top: $navbar-height + $spacing-unit
-    right $spacing-unit
-    transition-t('top', '0', '0.2', 'ease')
+    <div class="window-mask"></div>
 
-    .navbar-shrink &
-      top: $navbar-shrink-height + $spacing-unit
+</header>
 
-      +redefine-tablet()
-        top ($navbar-shrink-height * 0.9) + $spacing-unit
 
-      +redefine-mobile()
-        top: ($navbar-shrink-height * 0.8 + $spacing-unit)
+		</div>
 
-    +redefine-tablet()
-      top: ($navbar-height * 0.9 + $spacing-unit)
-      right 10px
-      transform scale(0.82)
-      transform-origin right top
+		<div class="main-content-body transition-fade-up">
+			
 
-    +redefine-mobile()
-      display none
-      top: ($navbar-height * 0.8 + $spacing-unit)
-      right 5px
-      transform scale(0.72)
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
 
-  .right-side-tools-container
-    position fixed
-    bottom 5%
-    right $spacing-unit
-    opacity 1
-    transition opacity 0.2s ease
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">k8s configmap 的使用</h1>
+			</div>
+			
+		</div>
 
-    &.hide
-      opacity 0
-      pointer-events none
-      transition opacity 0.2s ease
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/image/avatar.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">obsidiannn</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2019-06-06 10:34:09</span>
+        <span class="mobile">2019-06-06 10:34:09</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-03-20 00:21:52</span>
+            <span class="mobile">2025-03-20 00:21:52</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
 
-    +redefine-mobile()
-      right 12px
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/k8s/">k8s</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<blockquote>
+<p>一个关于k8s configmap的小总结~~~</p>
+</blockquote>
+<span id="more"></span>
+
+<p>configmap是k8s的一个重要的组件，顾名思义，configmap是一个关于配置的集合组件，事实上，有点像基于kv对的形式进行存储和使用的。</p>
+<h3 id="1、一个configmap的例子"><a href="#1、一个configmap的例子" class="headerlink" title="1、一个configmap的例子"></a>1、一个configmap的例子</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: ConfigMap</span><br><span class="line">metadata:</span><br><span class="line">  name: prometheus-config</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  labels:</span><br><span class="line">    kubernetes.io/cluster-service: &quot;true&quot;</span><br><span class="line">    addonmanager.kubernetes.io/mode: EnsureExists</span><br><span class="line">data:</span><br><span class="line">  prometheus.yml: |</span><br><span class="line">    .......</span><br></pre></td></tr></table></figure></div>
+<p>以上是prometheus的configmap配置文件，与<code>prometheus.yml</code> 对应的就是该yml文件内的所有内容，当这个configmap创建之后，configmap会生成一个虚拟的文件夹，由别的container来挂载configmap中<code>prometheus.yml</code>这个配置文件。</p>
+<h3 id="2、configmap的创建"><a href="#2、configmap的创建" class="headerlink" title="2、configmap的创建"></a>2、configmap的创建</h3><p>configmap创建拥有多种形式，可以通过命令行，文件、文件夹、或者直接通过k8s client的api进行创建。</p>
+<ul>
+<li><code>kubectl create -f configmap-demo.yml</code>:这种方式会把上面的yml文件创建为configmap</li>
+<li><code>kubectl create configmap &lt;name&gt; --from-file=prometheus.yml</code>: 这种方式会把<code>prometheus.yml</code>作为configmap的data进行创建</li>
+<li><code>kubectl  create  configmap  my -config  --from-file=/path/to/dir</code>:当采用这种方式时，k8s会寻找这个文件夹下面所有符合规范的文件，把所有文件作为configmap的data来创建configmap</li>
+<li>还有一种根据api来修改configmap的方法，最后说</li>
+</ul>
+<h3 id="3-configmap的使用"><a href="#3-configmap的使用" class="headerlink" title="3.configmap的使用"></a>3.configmap的使用</h3><p>configmap有三种使用的方式:</p>
+<ul>
+<li>环境变量</li>
+<li>使用configmap将条目暴露为文件</li>
+<li>挂载configmap的特定文件</li>
+</ul>
+<h4 id="3-1-环境变量形式-valueFrom"><a href="#3-1-环境变量形式-valueFrom" class="headerlink" title="3.1 环境变量形式 valueFrom"></a>3.1 环境变量形式 <code>valueFrom</code></h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">apiVers ion:  vl</span><br><span class="line">kind:  Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: xx</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - image: xx</span><br><span class="line">    env:</span><br><span class="line">    - name: ENV_NAME</span><br><span class="line">      valueFrom:</span><br><span class="line">        configMapKeyRef:</span><br><span class="line">          name: &lt;configmap name&gt;</span><br><span class="line">          key: &lt;configmap data key&gt;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-2-使用configmap将条目暴露为文件"><a href="#3-2-使用configmap将条目暴露为文件" class="headerlink" title="3.2  使用configmap将条目暴露为文件"></a>3.2  使用configmap将条目暴露为文件</h4><blockquote>
+<p>configmap 会把符合条件的配置生成为虚拟目录，生成到pod指定的目录下，如下文就是在<code>/etc/config/xx</code>目录下</p>
+</blockquote>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">apiVers ion:  vl</span><br><span class="line">kind:  Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: xx</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - image: xx</span><br><span class="line">    volumeMounts:</span><br><span class="line">    - name: config</span><br><span class="line">      mountPath: /etc/config/xx</span><br><span class="line">      readOnly:true</span><br><span class="line">  volumes:</span><br><span class="line">  - name: config</span><br><span class="line">    configMap:</span><br><span class="line">      name: &lt;configmap name&gt;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-3-使用configmap的特定文件"><a href="#3-3-使用configmap的特定文件" class="headerlink" title="3.3 使用configmap的特定文件"></a>3.3 使用configmap的特定文件</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">apiVers ion:  vl</span><br><span class="line">kind:  Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: xx</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - image: some/image</span><br><span class="line">  volumeMounts:</span><br><span class="line">  - name: myvolume</span><br><span class="line">  mountPath: /etc/someconfig.conf # 要挂载的目标文件</span><br><span class="line">  subPath: myconfig.conf # configmap 内的文件名</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="4-configmap-与prometheus-结合"><a href="#4-configmap-与prometheus-结合" class="headerlink" title="4.configmap 与prometheus 结合"></a>4.configmap 与prometheus 结合</h3><p>贴一个k8s 官方提供的prometheus 配置</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: apps/v1</span><br><span class="line">kind: StatefulSet</span><br><span class="line">metadata:</span><br><span class="line">  name: prometheus</span><br><span class="line">  namespace: kube-system</span><br><span class="line">  labels:</span><br><span class="line">    k8s-app: prometheus</span><br><span class="line">    kubernetes.io/cluster-service: &quot;true&quot;</span><br><span class="line">    addonmanager.kubernetes.io/mode: Reconcile</span><br><span class="line">    version: v2.8.1</span><br><span class="line">spec:</span><br><span class="line">  serviceName: &quot;prometheus&quot;</span><br><span class="line">  replicas: 1</span><br><span class="line">  podManagementPolicy: &quot;Parallel&quot;</span><br><span class="line">  updateStrategy:</span><br><span class="line">   type: &quot;RollingUpdate&quot;</span><br><span class="line">  selector:</span><br><span class="line">    matchLabels:</span><br><span class="line">      k8s-app: prometheus</span><br><span class="line">  template:</span><br><span class="line">    metadata:</span><br><span class="line">      labels:</span><br><span class="line">        k8s-app: prometheus</span><br><span class="line">      annotations:</span><br><span class="line">        scheduler.alpha.kubernetes.io/critical-pod: &#x27;&#x27;</span><br><span class="line">    spec:</span><br><span class="line">      priorityClassName: system-cluster-critical</span><br><span class="line">      serviceAccountName: prometheus</span><br><span class="line">      initContainers:</span><br><span class="line">      - name: &quot;init-chown-data&quot;</span><br><span class="line">        image: &quot;busybox:latest&quot;</span><br><span class="line">        imagePullPolicy: &quot;IfNotPresent&quot;</span><br><span class="line">        command: [&quot;chown&quot;, &quot;-R&quot;, &quot;65534:65534&quot;, &quot;/data&quot;]</span><br><span class="line">        volumeMounts:</span><br><span class="line">        - name: prometheus-data</span><br><span class="line">          mountPath: /data</span><br><span class="line">          subPath: &quot;&quot;</span><br><span class="line">      containers:</span><br><span class="line">        - name: prometheus-server-configmap-reload</span><br><span class="line">          image: &quot;jimmidyson/configmap-reload:v0.1&quot;</span><br><span class="line">          imagePullPolicy: &quot;IfNotPresent&quot;</span><br><span class="line">          args:</span><br><span class="line">            - --volume-dir=/etc/config</span><br><span class="line">            - --webhook-url=http://localhost:9090/-/reload</span><br><span class="line">          volumeMounts:</span><br><span class="line">            - name: config-volume</span><br><span class="line">              mountPath: /etc/config</span><br><span class="line">              readOnly: true</span><br><span class="line">          resources:</span><br><span class="line">            limits:</span><br><span class="line">              cpu: 10m</span><br><span class="line">              memory: 10Mi</span><br><span class="line">            requests:</span><br><span class="line">              cpu: 10m</span><br><span class="line">              memory: 10Mi</span><br><span class="line">        - name: prometheus-server</span><br><span class="line">          image: &quot;prom/prometheus:v2.8.1&quot;</span><br><span class="line">          imagePullPolicy: &quot;IfNotPresent&quot;</span><br><span class="line">          args:</span><br><span class="line">            - --config.file=/etc/config/prometheus.yml</span><br><span class="line">            - --storage.tsdb.path=/data</span><br><span class="line">            - --web.console.libraries=/etc/prometheus/console_libraries</span><br><span class="line">            - --web.console.templates=/etc/prometheus/consoles</span><br><span class="line">            - --web.enable-lifecycle</span><br><span class="line">          ports:</span><br><span class="line">            - containerPort: 9090</span><br><span class="line">          readinessProbe:</span><br><span class="line">            httpGet:</span><br><span class="line">              path: /-/ready</span><br><span class="line">              port: 9090</span><br><span class="line">            initialDelaySeconds: 30</span><br><span class="line">            timeoutSeconds: 30</span><br><span class="line">          livenessProbe:</span><br><span class="line">            httpGet:</span><br><span class="line">              path: /-/healthy</span><br><span class="line">              port: 9090</span><br><span class="line">            initialDelaySeconds: 30</span><br><span class="line">            timeoutSeconds: 30</span><br><span class="line">          # based on 10 running nodes with 30 pods each</span><br><span class="line">          resources:</span><br><span class="line">            limits:</span><br><span class="line">              cpu: 200m</span><br><span class="line">              memory: 1000Mi</span><br><span class="line">            requests:</span><br><span class="line">              cpu: 200m</span><br><span class="line">              memory: 1000Mi</span><br><span class="line">          volumeMounts:</span><br><span class="line">            - name: config-volume</span><br><span class="line">              mountPath: /etc/config</span><br><span class="line">            - name: prometheus-data</span><br><span class="line">              mountPath: /data</span><br><span class="line">              subPath: &quot;&quot;</span><br><span class="line">      terminationGracePeriodSeconds: 300</span><br><span class="line">      volumes:</span><br><span class="line">        - name: config-volume</span><br><span class="line">          configMap:</span><br><span class="line">            name: prometheus-config</span><br><span class="line">  volumeClaimTemplates:</span><br><span class="line">  - metadata:</span><br><span class="line">      name: prometheus-data</span><br><span class="line">    spec:</span><br><span class="line">      storageClassName: slow</span><br><span class="line">      accessModes:</span><br><span class="line">        - ReadWriteOnce</span><br><span class="line">      resources:</span><br><span class="line">        requests:</span><br><span class="line">          storage: &quot;16Gi&quot;</span><br></pre></td></tr></table></figure></div>
+
+<p>在上面的配置中，k8s官方利用了prometheus的热加载特性，内置了一个<code>jimmidyson/configmap-reload:v0.1</code>的container，它的作用就是在configmap发生变化时通过配置好的url来通知prometheus进行热加载。所以下文我们需要讲讲怎么通过k8s client 来进行configmap的更新。</p>
+<h3 id="5-k8s-client-java版本"><a href="#5-k8s-client-java版本" class="headerlink" title="5.k8s client java版本"></a>5.k8s client java版本</h3><blockquote>
+<p>k8s 官方提供了很多不同语言、不同种类的k8s客户端<br><a class="link"   target="_blank" rel="noopener" href="https://kubernetes.io/docs/reference/using-api/client-libraries/" >k8s 官网client列表<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<p>在这里选择的是<code>fabric8io</code>,一个对于Java友好的开源微服务管理平台。</p>
+<ul>
+<li>引入依赖: 由于节点的k8s版本是1.13+,所以要使用最新版本</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.fabric8&lt;/groupId&gt;x`</span><br><span class="line">    &lt;artifactId&gt;kubernetes-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;4.2.2&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>建立与k8s服务端的连接：</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Config config = new ConfigBuilder().withMasterUrl(MASTER_URL)</span><br><span class="line">                .withTrustCerts(true)</span><br><span class="line">                .withCaCertFile(&quot;/ca.crt&quot;) // 在这里的参数都是文件路径</span><br><span class="line">                .withClientKeyFile(&quot;/kubecfg.key&quot;) // 在这里的参数都是文件路径</span><br><span class="line">                .withClientCertFile(&quot;/kubecfg.crt&quot;) // 在这里的参数都是文件路径</span><br><span class="line">                .removeFromTlsVersions(TlsVersion.TLS_1_0)</span><br><span class="line">                .removeFromTlsVersions(TlsVersion.TLS_1_1)</span><br><span class="line">                .removeFromTlsVersions(TlsVersion.TLS_1_2)</span><br><span class="line">                .withRequestTimeout(REQUEST_TIMEOUT)</span><br><span class="line">                .withConnectionTimeout(CONNECTION_TIMEOUT)</span><br><span class="line">                .build();</span><br></pre></td></tr></table></figure></div>
+<p>在这里需要强调，如果你的k8s集群需要证书认证，则在创建config实例时需要生成双向认证证书，并把证书放入指定目录，如果不需要证书的话，则可以去掉大部分配置。</p>
+<ul>
+<li>如何生成双向认证的证书：</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 生成client crt</span><br><span class="line">grep &#x27;client-certificate-data&#x27; ~/.kube/config | head -n 1 | awk &#x27;&#123;print $2&#125;&#x27; | base64 -d &gt;&gt; kubecfg.crt</span><br><span class="line"></span><br><span class="line"># 生成client key</span><br><span class="line">grep &#x27;client-key-data&#x27; ~/.kube/config | head -n 1 | awk &#x27;&#123;print $2&#125;&#x27; | base64 -d &gt;&gt; kubecfg.key</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p>执行上述两条命令后，把生成的<code>kubecfg.crt</code> 与 <code>kubecfg.key</code> 保存到指定目录下即可。</p>
+<ul>
+<li>如何获取configmap的详细数据</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">KubernetesClient client = new DefaultKubernetesClient(config);</span><br><span class="line">Resource&lt;ConfigMap, DoneableConfigMap&gt; configMapResource.client.configMaps().inNamespace(namespace).</span><br><span class="line">                withName(name);</span><br><span class="line"> ConfigMap configMap = configMapResource.get();</span><br><span class="line"> Map&lt;String, String&gt; data = configMap.getData();</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>在这里<code>data</code>就是configmap的data属性，内部就是文件名-文件内容的kv对，所有对configmap的修改都是在<code>configmapresource</code>内进行的。</p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> k8s configmap 的使用</li>
+        <li><strong>Author:</strong> obsidiannn</li>
+        <li><strong>Created at
+                :</strong> 2019-06-06 10:34:09</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2025-03-20 00:21:52
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://blog.dadonggua.top/2019/06/06/14configmap的使用&amp;prometheus/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/k8s/">#k8s</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2019/06/10/15prometheus%20%E7%9A%84remote%20write/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">prometheus 的remote write</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2019/06/05/13etcd-install/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">etcd 集群的部署</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">k8s configmap 的使用</div>
+		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E4%B8%80%E4%B8%AAconfigmap%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="nav-text">1、一个configmap的例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81configmap%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="nav-text">2、configmap的创建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-configmap%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">3.configmap的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-configmap-%E4%B8%8Eprometheus-%E7%BB%93%E5%90%88"><span class="nav-text">4.configmap 与prometheus 结合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-k8s-client-java%E7%89%88%E6%9C%AC"><span class="nav-text">5.k8s client java版本</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">obsidiannn</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        17 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
 
 
 	

@@ -111,150 +111,854 @@
 
 
 <body>
-	@require '../common/variables'
+	<div class="progress-bar-container">
+	
 
-.page-title-header
-  font-size 3.2rem
-  line-height 1
-  font-weight bold
-  color var(--second-text-color)
-  margin 6px 0 36px 0
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
 
-.page-container
-  position relative
-  box-sizing border-box
-  width 100%
-  height auto
-  background var(--background-color)
+<main class="page-container" id="swup">
 
-  +redefine-tablet()
-    padding-right 0 !important
+	
 
-  .main-content-container
-    padding-top $navbar-height
-    position relative
-    transition padding 0.2s ease
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                obsidiannn
+                
+            </a>
+        </div>
 
-    .navbar-shrink &
-      padding-top $navbar-shrink-height
-      transition padding 0.2s ease
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
 
-      +redefine-tablet()
-        padding-top: ($navbar-shrink-height * 0.9)
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
 
-      +redefine-mobile()
-        padding-top: $navbar-shrink-height * 0.8
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
 
-    +redefine-tablet()
-      padding-top: $navbar-height * 0.9
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
 
-    +redefine-mobile()
-      padding-top: $navbar-height * 0.8
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
 
-    .main-content-header
-      position fixed
-      top 0
-      right 0
-      width 100%
-      height $navbar-height
-      z-index $z-index-5
-      box-sizing border-box
-      transition-t('transform, padding-left, height', '0, 0, 0', '0.3, 0.2, 0.2', 'ease-out, linear, ease')
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    TAGS
+                                    
+                                </a>
 
-      &.hide
-        transform translateY(-105%)
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
 
-      .navbar-shrink &
-        height $navbar-shrink-height
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
 
-        +redefine-tablet()
-          height: ($navbar-shrink-height * 0.9)
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/obsidiannn">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        +redefine-mobile()
-          height: $navbar-shrink-height * 0.8
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
 
-      +redefine-tablet()
-        height: $navbar-height * 0.9
-        padding-left 0 !important
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-      +redefine-mobile()
-        height: $navbar-height * 0.8
+                        
+                    </li>
+            
+                
+                    
 
-    .main-content-body
-      box-sizing border-box
-      width 100%
-      display flex
-      justify-content center
-      padding $spacing-unit 0
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-      +redefine-tablet()
-        padding ($spacing-unit * 0.8) 0
+                        
+                    </li>
+            
+                
+                    
 
-      +redefine-mobile()
-        border none !important
-        padding-top 0
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags"
+                        >
+                            <span>
+                                TAGS
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-      .main-content
-        position relative
-        box-sizing border-box
-        width $main-content-width
-        max-width $content-max-width
-        height 100%
-        transition-t('max-width, width', '0, 0', '0.2, 0.2', 'ease, ease')
+                        
+                    </li>
+            
+                
+                    
 
-        +redefine-tablet()
-          width $main-content-width-tablet
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
 
-        +redefine-mobile()
-          width $main-content-width-mobile
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/obsidiannn">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
 
-        &.has-toc
-          max-width $has-toc-content-max-width !important
+            
+            
+        </ul>
 
-      .main-content-footer
-        width 100%
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
 
-  .post-tools
-    position fixed
-    top: $navbar-height + $spacing-unit
-    right $spacing-unit
-    transition-t('top', '0', '0.2', 'ease')
+    <div class="window-mask"></div>
 
-    .navbar-shrink &
-      top: $navbar-shrink-height + $spacing-unit
+</header>
 
-      +redefine-tablet()
-        top ($navbar-shrink-height * 0.9) + $spacing-unit
 
-      +redefine-mobile()
-        top: ($navbar-shrink-height * 0.8 + $spacing-unit)
+		</div>
 
-    +redefine-tablet()
-      top: ($navbar-height * 0.9 + $spacing-unit)
-      right 10px
-      transform scale(0.82)
-      transform-origin right top
+		<div class="main-content-body transition-fade-up">
+			
 
-    +redefine-mobile()
-      display none
-      top: ($navbar-height * 0.8 + $spacing-unit)
-      right 5px
-      transform scale(0.72)
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
 
-  .right-side-tools-container
-    position fixed
-    bottom 5%
-    right $spacing-unit
-    opacity 1
-    transition opacity 0.2s ease
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">docker 非专业记录</h1>
+			</div>
+			
+		</div>
 
-    &.hide
-      opacity 0
-      pointer-events none
-      transition opacity 0.2s ease
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/image/avatar.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">obsidiannn</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2019-04-26 23:08:09</span>
+        <span class="mobile">2019-04-26 23:08:09</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-03-20 00:21:52</span>
+            <span class="mobile">2025-03-20 00:21:52</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
 
-    +redefine-mobile()
-      right 12px
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/linux/">linux</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/docker/">docker</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<blockquote>
+<p>docker </p>
+</blockquote>
+<span id="more"></span>
+
+
+<h2 id="docker的主要命令"><a href="#docker的主要命令" class="headerlink" title="docker的主要命令"></a>docker的主要命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>解释</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>yum install docker</td>
+<td>安装docker</td>
+<td></td>
+</tr>
+<tr>
+<td>service docker start</td>
+<td>启动docker</td>
+<td></td>
+</tr>
+<tr>
+<td>systemctl enable docker</td>
+<td>开机启动docker</td>
+<td></td>
+</tr>
+<tr>
+<td>docker version</td>
+<td>查看docker版本</td>
+<td></td>
+</tr>
+<tr>
+<td>docker search tutorial</td>
+<td>搜索可用docker镜像</td>
+<td>好像需要翻墙</td>
+</tr>
+<tr>
+<td>docker images</td>
+<td>获取宿主机的docker镜像</td>
+<td></td>
+</tr>
+<tr>
+<td>docker image rm</td>
+<td>删除本地镜像</td>
+<td>docker image rm [选项] &lt;镜像1&gt; [&lt;镜像2&gt; …]</td>
+</tr>
+<tr>
+<td>docker image ls -f dangling&#x3D;true</td>
+<td>清除虚悬镜像的命令</td>
+<td>由于版本更迭造成低版本镜像有为<code>&lt;none&gt;</code>的情况</td>
+</tr>
+<tr>
+<td>docker pull</td>
+<td>从docker仓库拉取镜像</td>
+<td>docker pull [选项] [Docker Registry 地址[:端口号]&#x2F;]仓库名[:标签]</td>
+</tr>
+<tr>
+<td>docker ps</td>
+<td>获取docker容器列表</td>
+<td></td>
+</tr>
+<tr>
+<td>docker commit 698 learn&#x2F;ping</td>
+<td>保存对容器的修改</td>
+<td>698 代表容器前3位id，后面是容器名称</td>
+</tr>
+<tr>
+<td>docker inspect xx</td>
+<td>查看某一容器详细信息</td>
+<td>xx 代表容器名称</td>
+</tr>
+<tr>
+<td>docker system df</td>
+<td>查看镜像、容器、数据卷所占用的空间。</td>
+<td></td>
+</tr>
+<tr>
+<td>docker run</td>
+<td>运行容器</td>
+<td></td>
+</tr>
+<tr>
+<td>docker exec -it xx &#x2F;path</td>
+<td>进入容器内部</td>
+<td>xx代表镜像名称 &#x2F;path 代表容器路径</td>
+</tr>
+<tr>
+<td>docker logs -f –tail 500 xx</td>
+<td>查看某容器前500行日志</td>
+<td>xx 代表容器名称</td>
+</tr>
+<tr>
+<td>docker cp &#x2F;etc&#x2F;localtime xx:&#x2F;etc&#x2F;</td>
+<td>修改docker 容器时间与linux宿主时间一致</td>
+<td>xx代表具体的容器id</td>
+</tr>
+<tr>
+<td>docker run -p 8086:8086 -it cloud_websocket &#x2F;bin&#x2F;bash</td>
+<td>创建docker容器</td>
+<td>8086:8086 代表容器内部端口:对外端口 此操作需要Dockerfile</td>
+</tr>
+<tr>
+<td>docker run –name&#x3D;grid-auto-dispatch-task  -p 9065:9065 -idt -v &#x2F;servers&#x2F;docker-jar&#x2F;grid-auto-dispatch-task:&#x2F;usr&#x2F;Downloads bolingcavalry&#x2F;springbootrun:0.0.2</td>
+<td>根据image创建并运行容器 -p：宿主机端口与容器端口映射 -v:将宿主机文件映射到容器中，做共享文件夹 –name：容器名称</td>
+<td></td>
+</tr>
+<tr>
+<td>sudo yum remove docker  docker-common docker-selinux docker-engine</td>
+<td>卸载docker组件</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="docker-run"><a href="#docker-run" class="headerlink" title="docker run"></a>docker run</h3><ul>
+<li><p>-it：这是两个参数，一个是 -i：交互式操作，一个是 -t 终端。我们这里打算进入 bash 执行一些命令并查看返回结果，因此我们需要交互式终端。</p>
+</li>
+<li><p>–rm：这个参数是说容器退出后随之将其删除。默认情况下，为了排障需求，退出的容器并不会立即删除，除非手动 docker rm。我们这里只是随便执行个命令，看看结果，不需要排障和保留结果，因此使用 –rm 可以避免浪费空间。</p>
+</li>
+<li><p>bash：放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 bash。</p>
+</li>
+</ul>
+<h3 id="DockerFile-定制镜像"><a href="#DockerFile-定制镜像" class="headerlink" title="DockerFile 定制镜像"></a>DockerFile 定制镜像</h3><blockquote>
+<p>Dockerfile 是一个文本文件，其内包含了一条条的指令(Instruction)，每一条指令构建一层，因此每一条指令的内容，就是描述该层应当如何构建。</p>
+</blockquote>
+<ul>
+<li>通过 <code>docker build </code> 根据Dockerfile 创建容器</li>
+</ul>
+<h4 id="Dockerfile-指令详解"><a href="#Dockerfile-指令详解" class="headerlink" title="Dockerfile 指令详解"></a>Dockerfile 指令详解</h4><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>作用</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>FROM</td>
+<td>功能为指定基础镜像，并且必须是第一条指令。</td>
+<td>如果不以任何镜像为基础，那么写法为：FROM scratch</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td>功能为运行指定的命令</td>
+<td><code>RUN ...</code></td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>功能为容器启动时要运行的命令</td>
+<td>RUN是构件容器时就运行的命令以及提交运行结果,CMD是容器启动时执行的命令，在构件时并不运行，构件时紧紧指定了这个命令到底是个什么样子</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td>一个复制命令，把文件复制到景象中</td>
+<td></td>
+</tr>
+<tr>
+<td>ADD</td>
+<td>一个复制命令，与copy的区别是<code>ADD</code> 可以复制远程文件</td>
+<td><code>ADD &lt;src&gt;... &lt;dest&gt;</code> src 代表要复制的路径，dest代表目标路径</td>
+</tr>
+<tr>
+<td>ENV</td>
+<td>设置环境变量</td>
+<td><code>ENV &lt;key&gt; &lt;value&gt;</code></td>
+</tr>
+<tr>
+<td>VOLUME</td>
+<td>可实现挂载功能，可以将本地文件夹或者其他容器中的文件夹挂在到这个容器中</td>
+<td><code>VOLUME /var/log /var/db</code></td>
+</tr>
+</tbody></table>
+<h3 id="关于-docker-compose"><a href="#关于-docker-compose" class="headerlink" title="关于 docker-compose"></a>关于 docker-compose</h3><ul>
+<li><p>docker-compose -f docker-compose.yml up -d</p>
+<blockquote>
+<p>docker-compose 启动目录下 <code>docker-compose.yml</code> 的容器</p>
+</blockquote>
+</li>
+<li><p>docker-compose down</p>
+<blockquote>
+<p>docker-compose 停止目录下 <code>docker-compose.yml</code> 的容器</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="docker-对镜像的导入导出"><a href="#docker-对镜像的导入导出" class="headerlink" title="docker 对镜像的导入导出"></a>docker 对镜像的导入导出</h3><ul>
+<li><p>docker save -o prometheus.tar prom&#x2F;prometheus:latest</p>
+<blockquote>
+<p>这条命令会在当前目录生成 prometheus.tar 文件</p>
+</blockquote>
+</li>
+<li><p>docker load -i nginx.tar</p>
+<blockquote>
+<p>加载nginx.tar 文件为镜像文件</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><h3 id="Redis-Redis-集群"><a href="#Redis-Redis-集群" class="headerlink" title="Redis  &amp; Redis 集群"></a>Redis  &amp; Redis 集群</h3><p>docker-compose create<br>docker-compose up -d</p>
+<h3 id="mysql-mysql-集群"><a href="#mysql-mysql-集群" class="headerlink" title="mysql &amp; mysql 集群"></a>mysql &amp; mysql 集群</h3>
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> docker 非专业记录</li>
+        <li><strong>Author:</strong> obsidiannn</li>
+        <li><strong>Created at
+                :</strong> 2019-04-26 23:08:09</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2025-03-20 00:21:52
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://blog.dadonggua.top/2019/04/26/11docker/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/linux/">#linux</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/docker/">#docker</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2019/05/10/12prometheus/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">prometheus 划水</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2019/03/22/10netty/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">netty 总结一下</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">docker 非专业记录</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker%E7%9A%84%E4%B8%BB%E8%A6%81%E5%91%BD%E4%BB%A4"><span class="nav-text">docker的主要命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-run"><span class="nav-text">docker run</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DockerFile-%E5%AE%9A%E5%88%B6%E9%95%9C%E5%83%8F"><span class="nav-text">DockerFile 定制镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-docker-compose"><span class="nav-text">关于 docker-compose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#docker-%E5%AF%B9%E9%95%9C%E5%83%8F%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA"><span class="nav-text">docker 对镜像的导入导出</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-text">部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis-Redis-%E9%9B%86%E7%BE%A4"><span class="nav-text">Redis  &amp; Redis 集群</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql-mysql-%E9%9B%86%E7%BE%A4"><span class="nav-text">mysql &amp; mysql 集群</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">obsidiannn</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        17 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
 
 
 	

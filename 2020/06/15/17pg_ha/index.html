@@ -111,150 +111,867 @@
 
 
 <body>
-	@require '../common/variables'
+	<div class="progress-bar-container">
+	
 
-.page-title-header
-  font-size 3.2rem
-  line-height 1
-  font-weight bold
-  color var(--second-text-color)
-  margin 6px 0 36px 0
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
 
-.page-container
-  position relative
-  box-sizing border-box
-  width 100%
-  height auto
-  background var(--background-color)
+<main class="page-container" id="swup">
 
-  +redefine-tablet()
-    padding-right 0 !important
+	
 
-  .main-content-container
-    padding-top $navbar-height
-    position relative
-    transition padding 0.2s ease
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                obsidiannn
+                
+            </a>
+        </div>
 
-    .navbar-shrink &
-      padding-top $navbar-shrink-height
-      transition padding 0.2s ease
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
 
-      +redefine-tablet()
-        padding-top: ($navbar-shrink-height * 0.9)
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
 
-      +redefine-mobile()
-        padding-top: $navbar-shrink-height * 0.8
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
 
-    +redefine-tablet()
-      padding-top: $navbar-height * 0.9
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
 
-    +redefine-mobile()
-      padding-top: $navbar-height * 0.8
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
 
-    .main-content-header
-      position fixed
-      top 0
-      right 0
-      width 100%
-      height $navbar-height
-      z-index $z-index-5
-      box-sizing border-box
-      transition-t('transform, padding-left, height', '0, 0, 0', '0.3, 0.2, 0.2', 'ease-out, linear, ease')
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    TAGS
+                                    
+                                </a>
 
-      &.hide
-        transform translateY(-105%)
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
 
-      .navbar-shrink &
-        height $navbar-shrink-height
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
 
-        +redefine-tablet()
-          height: ($navbar-shrink-height * 0.9)
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/obsidiannn">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        +redefine-mobile()
-          height: $navbar-shrink-height * 0.8
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
 
-      +redefine-tablet()
-        height: $navbar-height * 0.9
-        padding-left 0 !important
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-      +redefine-mobile()
-        height: $navbar-height * 0.8
+                        
+                    </li>
+            
+                
+                    
 
-    .main-content-body
-      box-sizing border-box
-      width 100%
-      display flex
-      justify-content center
-      padding $spacing-unit 0
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-      +redefine-tablet()
-        padding ($spacing-unit * 0.8) 0
+                        
+                    </li>
+            
+                
+                    
 
-      +redefine-mobile()
-        border none !important
-        padding-top 0
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags"
+                        >
+                            <span>
+                                TAGS
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-      .main-content
-        position relative
-        box-sizing border-box
-        width $main-content-width
-        max-width $content-max-width
-        height 100%
-        transition-t('max-width, width', '0, 0', '0.2, 0.2', 'ease, ease')
+                        
+                    </li>
+            
+                
+                    
 
-        +redefine-tablet()
-          width $main-content-width-tablet
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
 
-        +redefine-mobile()
-          width $main-content-width-mobile
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/obsidiannn">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
 
-        &.has-toc
-          max-width $has-toc-content-max-width !important
+            
+            
+        </ul>
 
-      .main-content-footer
-        width 100%
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
 
-  .post-tools
-    position fixed
-    top: $navbar-height + $spacing-unit
-    right $spacing-unit
-    transition-t('top', '0', '0.2', 'ease')
+    <div class="window-mask"></div>
 
-    .navbar-shrink &
-      top: $navbar-shrink-height + $spacing-unit
+</header>
 
-      +redefine-tablet()
-        top ($navbar-shrink-height * 0.9) + $spacing-unit
 
-      +redefine-mobile()
-        top: ($navbar-shrink-height * 0.8 + $spacing-unit)
+		</div>
 
-    +redefine-tablet()
-      top: ($navbar-height * 0.9 + $spacing-unit)
-      right 10px
-      transform scale(0.82)
-      transform-origin right top
+		<div class="main-content-body transition-fade-up">
+			
 
-    +redefine-mobile()
-      display none
-      top: ($navbar-height * 0.8 + $spacing-unit)
-      right 5px
-      transform scale(0.72)
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
 
-  .right-side-tools-container
-    position fixed
-    bottom 5%
-    right $spacing-unit
-    opacity 1
-    transition opacity 0.2s ease
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">postgresql 主备以及pgpool下的ha方案</h1>
+			</div>
+			
+		</div>
 
-    &.hide
-      opacity 0
-      pointer-events none
-      transition opacity 0.2s ease
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/image/avatar.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">obsidiannn</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2020-06-15 20:52:09</span>
+        <span class="mobile">2020-06-15 20:52:09</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-03-20 00:21:52</span>
+            <span class="mobile">2025-03-20 00:21:52</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
 
-    +redefine-mobile()
-      right 12px
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/timescale/">timescale</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/postgresql/">postgresql</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<blockquote>
+<p>这篇文章是pg 主备的配置 以及 pgpool 的使用</p>
+</blockquote>
+<span id="more"></span>
+
+
+<h2 id="1-pg11-安装"><a href="#1-pg11-安装" class="headerlink" title="1.pg11 安装"></a>1.pg11 安装</h2><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm</span><br><span class="line">yum install postgresql11</span><br><span class="line">yum install postgresql11-server</span><br><span class="line">/usr/pgsql-11/bin/postgresql-11-setup initdb</span><br><span class="line">systemctl enable postgresql-11</span><br><span class="line">systemctl start postgresql-11</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="2-stand-by"><a href="#2-stand-by" class="headerlink" title="2.stand by"></a>2.stand by</h2><h3 id="2-1-primary-db"><a href="#2-1-primary-db" class="headerlink" title="2.1 primary db"></a>2.1 primary db</h3><ul>
+<li>创建复制账号</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE ROLE pgrepuser REPLICATION LOGIN ENCRYPTED PASSWORD &#x27;pgreppass&#x27;;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>postgresql.conf</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">listen_addresses = &#x27;*&#x27;</span><br><span class="line">max_connections = 1024</span><br><span class="line">password_encryption = on</span><br><span class="line">wal_level = hot_standby</span><br><span class="line">archive_mode = on</span><br><span class="line">max_wal_sender = 4</span><br><span class="line">wal_keep_segments = 10</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>pg_hba.conf</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">host    replication     pgrepuser       0.0.0.0/0               md5</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>重启 pg11</li>
+</ul>
+<h3 id="2-2-standby-db-异步"><a href="#2-2-standby-db-异步" class="headerlink" title="2.2 standby db 异步"></a>2.2 standby db 异步</h3><ul>
+<li>启动容器standby</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d --name standby_pg11 -p 15432:5432 -e POSTGRES_PASSWORD=postgres -v /etc/localtime:/etc/localtime -v /home/pgdata/:/var/lib/postgresql/data -e TZ=Asia/Shanghai postgres:11.4</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>进入内部</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it standby_pg11 bash</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>获取 primary db 的文件内容<ul>
+<li>切换身份 postgres</li>
+<li>删掉原有数据</li>
+<li>执行 <code>pg_basebackup</code></li>
+<li>输入密码<code>pgreppass</code></li>
+</ul>
+</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su postgres  </span><br><span class="line"></span><br><span class="line">cd /var/lib/postgresql/data &amp;&amp; rm -rf * &amp;&amp; /usr/lib/postgresql/11/bin/pg_basebackup -D $PGDATA -Fp -Xstream -R -c fast -v -R -P -h $&#123;primary db host&#125; -U pgrepuser -W</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>成功后，<code>-R</code>会新生成 <code>recovery.conf</code></li>
+</ul>
+<h4 id="可能出现的问题"><a href="#可能出现的问题" class="headerlink" title="可能出现的问题"></a>可能出现的问题</h4><ul>
+<li>如果 primary db 使用中文 会报错:</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">invalid value for parameter &quot;lc_messages&quot;: &quot;zh_CN.UTF-8&quot;</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>这是两者版本不一致导致的,删掉 <code>postgres.conf</code> 内的<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lc_messages = &#x27;zh_CN.UTF-8&#x27;			# locale for system error message</span><br><span class="line">					# strings</span><br><span class="line">lc_monetary = &#x27;zh_CN.UTF-8&#x27;			# locale for monetary formatting</span><br><span class="line">lc_numeric = &#x27;zh_CN.UTF-8&#x27;			# locale for number formatting</span><br><span class="line">lc_time = &#x27;zh_CN.UTF-8&#x27;				# locale for time formatting</span><br></pre></td></tr></table></figure></div></li>
+<li>然后重启 容器，内部执行<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localedef -f UTF-8 -i zh_CN zh_CN.UTF-8</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<h3 id="2-2-standby-db-同步配置"><a href="#2-2-standby-db-同步配置" class="headerlink" title="2.2 standby db 同步配置"></a>2.2 standby db 同步配置</h3><ul>
+<li><p>a. <code>recovery.conf</code> 修改配置，并重启</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">standby_mode = &#x27;on&#x27;</span><br><span class="line">primary_conninfo = &#x27;application_name=a ....</span><br></pre></td></tr></table></figure></div>
+<p>其中，<code>a,b,c</code> 代表从库的<code>application_name</code>，逗号分隔，在从库的<code>revovery.conf</code>内配置</p>
+</li>
+<li><p>修改primarydb</p>
+<ul>
+<li><p>1 开启 postgres.conf 参数，指定具体的从库<code>application_name</code></p>
+  <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">synchronous_standby_names=&#x27;a,b,c&#x27;</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>2 加载配置文件</p>
+  <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pg_ctl reload -D $&#123;pg 的data目录&#125;</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+</li>
+</ul>
+<p><strong>当从库（standbydb）数量小于1，且配置同步更新时，主库的写操作会终止</strong></p>
+<h3 id="2-3-冲突解决"><a href="#2-3-冲突解决" class="headerlink" title="2.3 冲突解决"></a>2.3 冲突解决</h3><h4 id="从库"><a href="#从库" class="headerlink" title="从库"></a>从库</h4><ul>
+<li><p>max_standby_streaming_delay &#x3D; 30s</p>
+<ul>
+<li><p>作为切换主备时，值尽可能小</p>
+</li>
+<li><p>作为查询使用时，值尽可能大</p>
+</li>
+</ul>
+</li>
+<li><p>hot_standby_feedback&#x3D;on 多版本冲突解决</p>
+</li>
+</ul>
+<h4 id="2-4-流复制查询"><a href="#2-4-流复制查询" class="headerlink" title="2.4 流复制查询"></a>2.4 流复制查询</h4><ul>
+<li>主库执行<ul>
+<li>查询复制 <code>select * from pg_stat_replication</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="3-pgpool2"><a href="#3-pgpool2" class="headerlink" title="3 pgpool2"></a>3 pgpool2</h2><blockquote>
+<p>官网 ： <a class="link"   target="_blank" rel="noopener" href="https://www.pgpool.net/" >https://www.pgpool.net/<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+</blockquote>
+<blockquote>
+<p>这里主要是利用pgpool实现主备切换，负载均衡</p>
+</blockquote>
+<ul>
+<li>设备概览</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>node</th>
+<th>name</th>
+<th>desc</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>192.168.10.212</td>
+<td>cent7</td>
+<td>pg 服务器A，以及pgpool</td>
+</tr>
+<tr>
+<td>192.168.10.233</td>
+<td>rh</td>
+<td>pg 服务器B，以及pgpool</td>
+</tr>
+</tbody></table>
+<h3 id="3-1-pgpool2-安装"><a href="#3-1-pgpool2-安装" class="headerlink" title="3.1 pgpool2 安装"></a>3.1 pgpool2 安装</h3><p>可以选择源码编译，或者rpm安装，这里选择的是源码编译</p>
+<p><strong>注意关闭selinx</strong></p>
+<ul>
+<li>下载源码，解压</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /data/source &amp;&amp; /data/source</span><br><span class="line">wget http://www.pgpool.net/download.php?f=pgpool-II-4.1.0.tar.gz</span><br><span class="line">tar xsvf d*</span><br><span class="line">rm -f d*</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>安装编译所需依赖包</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum -y install libmemcached-devel</span><br><span class="line">yum install postgresql-devel</span><br><span class="line"></span><br><span class="line">// 这两个可以不安装</span><br><span class="line">yum -y install flex</span><br><span class="line">yum -y install bison</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>配置pg11 环境变量</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line">export PGHOME=/usr/pgsql-11</span><br><span class="line">export PGDATA=/var/lib/pgsql/11/data</span><br><span class="line">// 保存</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>设置 A B 服务器为<code>postgres</code>账号免密登录</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">su - postgres</span><br><span class="line">ssh-keygen -t rsa</span><br><span class="line">scp id_rsa.pub postgres@192.168.10.233:/var/lib/pgsql/.ssh/demo</span><br><span class="line">cat demo &gt;&gt; ~/.ssh/authorized_keys</span><br><span class="line">chmod 700 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure></div>
+
+
+<ul>
+<li>进行编译,把pgpool 生成到 <code>/home/pgpool</code> 目录</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd pgpool2-4_1_0</span><br><span class="line">./configure --prefix=/home/pgpool --with-pgsql=$PGDATA</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">chown -R postgres.postgres /home/pgpool</span><br><span class="line">su - postgres</span><br><span class="line">cd /data/source/pgpool2-4_1_0/src/sql/</span><br><span class="line">make &amp;&amp; make install</span><br><span class="line">cd pgpool-recovery</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>修改<code>postgresql.conf 文件</code></li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pgpool.pg_ctl = &#x27;/usr/pgsql-11/bin/pg_ctl&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>切换为root用户，赋权</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">chmod +s /bin/ping</span><br><span class="line">chmod +s /sbin/ifup</span><br><span class="line">chmod +s /sbin/ip</span><br><span class="line">chmod +s /sbin/ifconfig</span><br><span class="line">chmod +s /sbin/arping</span><br><span class="line">chmod u+s /usr/sbin</span><br><span class="line">chmod u+s /sbin/ifconfig</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>insert_lock，建议开启</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su postgres</span><br><span class="line">cd pgpool-II-x.x.x/src/sql</span><br><span class="line">psql -f insert_lock.sql template1</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>然后把template1 写入 pgpool.conf 配置文件</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">insert_lock = on</span><br><span class="line">lobj_lock_table = &#x27;template1&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-2-pgpool-配置"><a href="#3-2-pgpool-配置" class="headerlink" title="3.2 pgpool 配置"></a>3.2 pgpool 配置</h3><p>这一步的配置都是在 <code>postgres</code> 用户完成的</p>
+<blockquote>
+<p>#3.1 的步骤是AB服务器通用的<br>&#x2F;home&#x2F;pgpool 里面是pgpool的目录，.&#x2F;etc 内是配置文件</p>
+</blockquote>
+<ul>
+<li>复制模板为配置文件</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /home/pgpool</span><br><span class="line">cp etc/pgpool.conf.sample-stream etc/pgpool.conf</span><br><span class="line">cp etc/pcp.conf.sample etc/pcp.conf</span><br><span class="line">cp etc/hba.conf.sample etc/hba.conf</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>其他配置</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">bin/pg_md5 postgres 把生成的MD5写入pcp.conf:</span><br><span class="line">postgres:e8a48653851e28c69d0506508fb27f2d</span><br><span class="line"></span><br><span class="line">etc/hba.conf 与 pg_hba.conf 保持一致</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>主要配置 <code>pgpool.conf</code>,下面是需要改的，其他的不变</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">listen_addresses = &#x27;*&#x27;</span><br><span class="line"># a机器pg的配置</span><br><span class="line">backend_hostname0 = &#x27;192.168.10.212&#x27;</span><br><span class="line">backend_port0 = 15432</span><br><span class="line">backend_weight0 = 1</span><br><span class="line">backend_data_directory0 = &#x27;/var/lib/pgsql/11/data&#x27;</span><br><span class="line">backend_flag0 = &#x27;ALLOW_TO_FAILOVER&#x27;</span><br><span class="line"></span><br><span class="line"># b 机器 pg的配置</span><br><span class="line">backend_hostname1 = &#x27;192.168.10.233&#x27;</span><br><span class="line">backend_port1 = 15432</span><br><span class="line">backend_weight1 = 1</span><br><span class="line">backend_data_directory1 = &#x27;/var/lib/pgsql/11/data&#x27;</span><br><span class="line">backend_flag1 = &#x27;ALLOW_TO_FAILOVER&#x27;</span><br><span class="line"></span><br><span class="line"># 这个目录需要root赋予完全的权限</span><br><span class="line">pid_file_name=&#x27;/var/run/pgpool/pgpool.pid&#x27;</span><br><span class="line"></span><br><span class="line">master_slave_sub_mode = &#x27;stream&#x27;</span><br><span class="line">sr_check_period=5</span><br><span class="line">sr_check_user = &#x27;postgres&#x27;</span><br><span class="line">sr_check_password = &#x27;postgres&#x27;</span><br><span class="line"></span><br><span class="line">health_check_user = &#x27;postgres&#x27;</span><br><span class="line">health_check_password = &#x27;postgres&#x27;</span><br><span class="line">health_check_database = &#x27;postgres&#x27;</span><br><span class="line"></span><br><span class="line"># 这个sh没有，需要自己加在指定路径，并赋权</span><br><span class="line">failover_command = &#x27;/home/pgpool/failover_stream.sh %H &#x27;</span><br><span class="line"></span><br><span class="line">recovery_user = &#x27;postgres&#x27;</span><br><span class="line">recovery_password = &#x27;postgres&#x27;</span><br><span class="line"></span><br><span class="line">use_watchdog = on</span><br><span class="line"># 写本机的配置</span><br><span class="line">wd_hostname = &#x27;192.168.10.233&#x27;     </span><br><span class="line"># 虚拟ip，需要为一个网段且未被占用</span><br><span class="line">delegate_IP = &#x27;192.168.10.100&#x27;</span><br><span class="line"></span><br><span class="line"># 这里的enp0s20f0u3 是本机的网卡名称</span><br><span class="line">if_cmd_path = &#x27;/usr/sbin&#x27;</span><br><span class="line">if_up_cmd = &#x27;ip addr add $_IP_$/24 dev enp0s20f0u3 label enp0s20f0u3:0&#x27;</span><br><span class="line">if_down_cmd = &#x27;ip addr del $_IP_$/24 dev enp0s20f0u3&#x27;</span><br><span class="line"></span><br><span class="line">arping_path = &#x27;/usr/sbin&#x27;</span><br><span class="line">arping_cmd = &#x27;arping -U $_IP_$ -w 1 -I enp0s20f0u3&#x27;</span><br><span class="line"></span><br><span class="line"># 失败配置，这套配置是不论pgpool节点数量，一旦主节点损坏，立即进行节点转移</span><br><span class="line"></span><br><span class="line">failover_when_quorum_exists = off</span><br><span class="line">failover_require_consensus = on</span><br><span class="line">allow_multiple_failover_requests_from_node = off</span><br><span class="line">enable_consensus_with_half_votes = on</span><br><span class="line"></span><br><span class="line"># 写对方的配置 device0 是对方的具体的网卡名称</span><br><span class="line">heartbeat_destination0 = &#x27;192.168.10.212&#x27;</span><br><span class="line">heartbeat_destination_port0 = 9694</span><br><span class="line">heartbeat_device0 = &#x27;enp2s0&#x27;</span><br><span class="line"></span><br><span class="line">wd_lifecheck_user = &#x27;postgres&#x27;</span><br><span class="line">wd_lifecheck_password = &#x27;postgres&#x27;</span><br><span class="line"></span><br><span class="line"># 写对方的配置</span><br><span class="line">other_pgpool_hostname0 = &#x27;192.168.10.212&#x27;</span><br><span class="line">other_pgpool_port0 = 9999</span><br><span class="line">other_wd_port0 = 9000</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>failover_stream.sh</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#! /bin/sh</span><br><span class="line"># Failover command for streaming replication.</span><br><span class="line"># Arguments: $1: new master hostname.</span><br><span class="line">new_master=$1</span><br><span class="line">trigger_command=&quot;$PGHOME/bin/pg_ctl promote -D $PGDATA&quot;</span><br><span class="line"></span><br><span class="line"># Prompte standby database.</span><br><span class="line">/usr/bin/ssh -T $new_master $trigger_command</span><br><span class="line"></span><br><span class="line">exit 0;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="3-3-pgpool的操作"><a href="#3-3-pgpool的操作" class="headerlink" title="3.3 pgpool的操作"></a>3.3 pgpool的操作</h3><ul>
+<li>启动</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/pgpool -n -d &gt; /home/pgpool/run.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>停止</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/pgpool -m fast stop</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>当节点的pg宕机后，恢复命令</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/pcp_attach_node -p 9898 -h 192.168.10.100 -U postgres -n 0</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>sql 命令 ： 连接pgopool 的服务（port&#x3D;9999）执行，可以查看目前的节点状态</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show pool_nodes;</span><br></pre></td></tr></table></figure></div>
+
+<p>这套配置可以实现主从的互相切换，当某一个节点出现宕机后，需要进行手动同步节点状态，pgpool才会重新进行负载</p>
+<h3 id="3-4-数据恢复"><a href="#3-4-数据恢复" class="headerlink" title="3.4 数据恢复"></a>3.4 数据恢复</h3><ul>
+<li><code>postgresql.conf</code> 需要开启几个配置</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">full_page_writes = on</span><br><span class="line">wal_log_hints = on</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>如果宕机的节点为主节点时，需要首先进行数据同步</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">su postgresql</span><br><span class="line">$PGHOME/bin/pg_rewind  --target-pgdata=$PGDATA -P --source-server=&#x27;host=192.168.10.100 port=9999 user=postgres dbname=postgres password=postgres&#x27;</span><br><span class="line"></span><br><span class="line">mv recovery.done recovery.conf</span><br><span class="line">$PGHOME/bin/pg_ctl start -D $PGDATA</span><br><span class="line"></span><br><span class="line">bin/pcp_attach_node -p 9898 -h 192.168.10.100 -U postgres -n #&#123;具体的nodeid&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<p>这套配置仅是pg的主从stream模式的高可用配置</p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> postgresql 主备以及pgpool下的ha方案</li>
+        <li><strong>Author:</strong> obsidiannn</li>
+        <li><strong>Created at
+                :</strong> 2020-06-15 20:52:09</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2025-03-20 00:21:52
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://blog.dadonggua.top/2020/06/15/17pg_ha/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/timescale/">#timescale</a>&nbsp;
+			</li>
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/postgresql/">#postgresql</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2020/06/01/16timescale-compression/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">timescaledb 压缩调研</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">postgresql 主备以及pgpool下的ha方案</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-pg11-%E5%AE%89%E8%A3%85"><span class="nav-text">1.pg11 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-stand-by"><span class="nav-text">2.stand by</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-primary-db"><span class="nav-text">2.1 primary db</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-standby-db-%E5%BC%82%E6%AD%A5"><span class="nav-text">2.2 standby db 异步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-standby-db-%E5%90%8C%E6%AD%A5%E9%85%8D%E7%BD%AE"><span class="nav-text">2.2 standby db 同步配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%86%B2%E7%AA%81%E8%A7%A3%E5%86%B3"><span class="nav-text">2.3 冲突解决</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-pgpool2"><span class="nav-text">3 pgpool2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-pgpool2-%E5%AE%89%E8%A3%85"><span class="nav-text">3.1 pgpool2 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-pgpool-%E9%85%8D%E7%BD%AE"><span class="nav-text">3.2 pgpool 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-pgpool%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-text">3.3 pgpool的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E6%95%B0%E6%8D%AE%E6%81%A2%E5%A4%8D"><span class="nav-text">3.4 数据恢复</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">obsidiannn</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        17 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
 
 
 	

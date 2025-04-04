@@ -110,150 +110,711 @@
 
 
 <body>
-	@require '../common/variables'
+	<div class="progress-bar-container">
+	
 
-.page-title-header
-  font-size 3.2rem
-  line-height 1
-  font-weight bold
-  color var(--second-text-color)
-  margin 6px 0 36px 0
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
 
-.page-container
-  position relative
-  box-sizing border-box
-  width 100%
-  height auto
-  background var(--background-color)
+<main class="page-container" id="swup">
 
-  +redefine-tablet()
-    padding-right 0 !important
+	
 
-  .main-content-container
-    padding-top $navbar-height
-    position relative
-    transition padding 0.2s ease
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                obsidiannn
+                
+            </a>
+        </div>
 
-    .navbar-shrink &
-      padding-top $navbar-shrink-height
-      transition padding 0.2s ease
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
 
-      +redefine-tablet()
-        padding-top: ($navbar-shrink-height * 0.9)
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
 
-      +redefine-mobile()
-        padding-top: $navbar-shrink-height * 0.8
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
 
-    +redefine-tablet()
-      padding-top: $navbar-height * 0.9
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    ARCHIVES
+                                    
+                                </a>
 
-    +redefine-mobile()
-      padding-top: $navbar-height * 0.8
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
 
-    .main-content-header
-      position fixed
-      top 0
-      right 0
-      width 100%
-      height $navbar-height
-      z-index $z-index-5
-      box-sizing border-box
-      transition-t('transform, padding-left, height', '0, 0, 0', '0.3, 0.2, 0.2', 'ease-out, linear, ease')
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    TAGS
+                                    
+                                </a>
 
-      &.hide
-        transform translateY(-105%)
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
 
-      .navbar-shrink &
-        height $navbar-shrink-height
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    ABOUT
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
 
-        +redefine-tablet()
-          height: ($navbar-shrink-height * 0.9)
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="https://github.com/obsidiannn">
+                                                    GITHUB
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        +redefine-mobile()
-          height: $navbar-shrink-height * 0.8
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
 
-      +redefine-tablet()
-        height: $navbar-height * 0.9
-        padding-left 0 !important
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-      +redefine-mobile()
-        height: $navbar-height * 0.8
+                        
+                    </li>
+            
+                
+                    
 
-    .main-content-body
-      box-sizing border-box
-      width 100%
-      display flex
-      justify-content center
-      padding $spacing-unit 0
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                ARCHIVES
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-      +redefine-tablet()
-        padding ($spacing-unit * 0.8) 0
+                        
+                    </li>
+            
+                
+                    
 
-      +redefine-mobile()
-        border none !important
-        padding-top 0
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags"
+                        >
+                            <span>
+                                TAGS
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
 
-      .main-content
-        position relative
-        box-sizing border-box
-        width $main-content-width
-        max-width $content-max-width
-        height 100%
-        transition-t('max-width, width', '0, 0', '0.2, 0.2', 'ease, ease')
+                        
+                    </li>
+            
+                
+                    
 
-        +redefine-tablet()
-          width $main-content-width-tablet
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-About"
+                        >
+                            <span>
+                                ABOUT
+                            </span>
+                            
+                                <i class="fa-solid fa-chevron-right fa-sm fa-fw transition-all"></i>
+                            
+                        </div>
+                        
 
-        +redefine-mobile()
-          width $main-content-width-mobile
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-About">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="https://github.com/obsidiannn">GITHUB</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
 
-        &.has-toc
-          max-width $has-toc-content-max-width !important
+            
+            
+        </ul>
 
-      .main-content-footer
-        width 100%
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
 
-  .post-tools
-    position fixed
-    top: $navbar-height + $spacing-unit
-    right $spacing-unit
-    transition-t('top', '0', '0.2', 'ease')
+    <div class="window-mask"></div>
 
-    .navbar-shrink &
-      top: $navbar-shrink-height + $spacing-unit
+</header>
 
-      +redefine-tablet()
-        top ($navbar-shrink-height * 0.9) + $spacing-unit
 
-      +redefine-mobile()
-        top: ($navbar-shrink-height * 0.8 + $spacing-unit)
+		</div>
 
-    +redefine-tablet()
-      top: ($navbar-height * 0.9 + $spacing-unit)
-      right 10px
-      transform scale(0.82)
-      transform-origin right top
+		<div class="main-content-body transition-fade-up">
+			
 
-    +redefine-mobile()
-      display none
-      top: ($navbar-height * 0.8 + $spacing-unit)
-      right 5px
-      transform scale(0.72)
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
 
-  .right-side-tools-container
-    position fixed
-    bottom 5%
-    right $spacing-unit
-    opacity 1
-    transition opacity 0.2s ease
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Jquery 的一些林林总总</h1>
+			</div>
+			
+		</div>
 
-    &.hide
-      opacity 0
-      pointer-events none
-      transition opacity 0.2s ease
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/image/avatar.png">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">obsidiannn</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv3</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2017-05-10 16:52:09</span>
+        <span class="mobile">2017-05-10 16:52:09</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-03-20 00:21:52</span>
+            <span class="mobile">2025-03-20 00:21:52</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
 
-    +redefine-mobile()
-      right 12px
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Jquery/">Jquery</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h1 id="Jquery-的一些林林总总"><a href="#Jquery-的一些林林总总" class="headerlink" title="Jquery 的一些林林总总"></a>Jquery 的一些林林总总</h1><blockquote>
+<p>最近看了一本《精妙绝伦JQuery》，里面讲的比较细致，自己都快没耐心啃完了，记下来了一些自己能用到的东西，希望以后可以有所帮助</p>
+</blockquote>
+<span id="more"></span>
+
+<h4 id="首先-最近面试的时候问到的："><a href="#首先-最近面试的时候问到的：" class="headerlink" title="首先 - - 最近面试的时候问到的："></a>首先 - - 最近面试的时候问到的：</h4>  <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(document).ready 与JavaScript里onload方法的区别：</span><br><span class="line">$(document).ready(function()&#123;&#125;) 代表的是在DOM加载之前完成代码内加载</span><br><span class="line">onload 事件会在页面或图像加载完成后立即发生。</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<p><strong>这是jQuery的一些常用方法</strong><br>  <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">1.			.load()	预加载图片</span><br><span class="line">2.			.ready()	事件监测DOM是否完全加载</span><br><span class="line">3.			.unload()	在离开页面时或用户单机一个新连接是触发</span><br><span class="line">4.			.resize()	改变浏览器大小时触发</span><br><span class="line">5.			.scroll()	用户滚动窗口时触发</span><br><span class="line">6.			.error()	当http请求遇到错误是触发	可以用来显示备用图片，也就是</span><br><span class="line">      网页上的图挂了之后，可以用别的图替代图挂了- - 表达不能2333</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">7.		.bind()	绑定事件函数</span><br><span class="line"></span><br><span class="line">8.		.live()	提供一个灵活的捕获事件的方式</span><br><span class="line">    	.live(event type,event handler);</span><br><span class="line"></span><br><span class="line">9.		.delegate()	三个参数：1.选择器		2.事件类型		3.响应函数</span><br><span class="line"></span><br></pre></td></tr></table></figure></div></p>
+<p><strong>捕获鼠标事件</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">click	单击鼠标并释放</span><br><span class="line">dbclick	双击触发</span><br><span class="line">mousedown	鼠标被按下触发</span><br><span class="line">mouseup		鼠标松开后触发</span><br><span class="line">mouseenter	鼠标进入某易元素区域时触发</span><br><span class="line">mouseleave	..离开时触发</span><br><span class="line">mousemove	鼠标在区域内移动时触发</span><br><span class="line">mouseout	离开该区域及父元素时触发</span><br><span class="line">mouseover	鼠标进入某一元素及父元素时触发</span><br></pre></td></tr></table></figure></div>
+<p><strong>捕获表单事件</strong><br>  <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">change()	表单值改变时触发</span><br><span class="line">focus()		敲TAB键触发</span><br><span class="line">focusin()	元素或子元素得到焦点时触发</span><br><span class="line">focusout()	元素或子元素失去焦点时触发</span><br><span class="line">blur()		文本域/文本框失去焦点时触发</span><br><span class="line">select()	元素内文本被选中时触发</span><br><span class="line">submit()	表单提交时触发</span><br><span class="line">reset()		重置</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div></p>
+<h4 id="关于网站特效"><a href="#关于网站特效" class="headerlink" title="关于网站特效"></a>关于网站特效</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">show()</span><br><span class="line">hide()</span><br><span class="line">toggle()	根据当前状态显示/隐藏 切换状态</span><br><span class="line">slideDown()	以向下滑动展开的方式显示元素</span><br><span class="line">fadeIn()	元素以淡入的方式显示</span><br><span class="line">fadeout()	元素以淡入淡出的方式消失</span><br><span class="line">fadeTo()	淡入淡出至某个透明度</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="关于cookie（这可是他娘的重点）"><a href="#关于cookie（这可是他娘的重点）" class="headerlink" title="关于cookie（这可是他娘的重点）"></a>关于cookie（这可是他娘的重点）</h3><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">1.如何种cookie</span><br><span class="line">		function  startCookie()&#123;</span><br><span class="line">		var expirDate = new Date();</span><br><span class="line">		expirDate.setDate(expirDate.getDate+30);	cookie过期时间</span><br><span class="line">		document.cookie = &quot;name=hideCookie;expires=&quot;+expirDate.toUTCString</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	(可以使用jQuery的cookie插件拿到具体cookie)</span><br></pre></td></tr></table></figure></div>
+<p>  <strong>注</strong>：当没有指明 cookie有效时间时，所创建的cookie有效期默认到用户关闭浏览器为止，所以被称为<br>  “会话cookie（session cookie）”。</p>
+  <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$.cookie(&#x27;cookName&#x27;)</span><br><span class="line">$.cookie(&#x27;key&#x27;,&#x27;value&#x27;)</span><br><span class="line">$.cookie(&#x27;key&#x27;,&#x27;value&#x27;,&#123; expires: 7 &#125;);//意思是创建一个7天有效期的cookie</span><br><span class="line"></span><br><span class="line">$.cookie(&#x27;key&#x27;,&#x27;value&#x27;,&#123; expires: 7,path:&#x27;/&#x27;&#125;);</span><br><span class="line">//意思是创建一个7天有效期的cookie,且存储路径为/</span><br></pre></td></tr></table></figure></div>
+<h4 id="读取cookie："><a href="#读取cookie：" class="headerlink" title="读取cookie："></a>读取cookie：</h4><div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.cookie(&#x27;the_cookie&#x27;); // cookie存在 =&gt; &#x27;the_value&#x27;</span><br><span class="line"></span><br><span class="line">$.cookie(&#x27;not_existing&#x27;); // cookie不存在 =&gt; null</span><br><span class="line"></span><br><span class="line">5.删除cookie，通过传递null作为cookie的值即可：</span><br><span class="line"></span><br><span class="line">$.cookie(&#x27;the_cookie&#x27;, null);</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h3><blockquote>
+<p>传说中的，标志着人类互联网历史的一大步，就连名字也很后现代化的Ajax</p>
+</blockquote>
+<p>  ** Ajax指在不需要刷新页面的情况下，允许客户端应用程序传递数据给服务器并获取数据的一组模式和技术 **</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1.$(selector).load(URL,回调函数&#123;  &#125;)</span><br><span class="line">   $(&#x27;#content&#x27;).load(&#x27;Class5.html&#x27;,function(responseText,textStatus,XMLHttpRequest)&#123;</span><br><span class="line"></span><br><span class="line">           //检查不同的响应码</span><br><span class="line"></span><br><span class="line">           if(XMLHttpRequest.status == 404||XMLHttpRequest.status == 500)&#123;</span><br><span class="line">               $(&#x27;#content&#x27;).html(&#x27;There has been an error,please try angin later&#x27;);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<h4 id="关于响应码"><a href="#关于响应码" class="headerlink" title="关于响应码"></a>关于响应码</h4><table>
+<thead>
+<tr>
+<th>响应码</th>
+<th>对应解释</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>200</td>
+<td>成功</td>
+</tr>
+<tr>
+<td>301</td>
+<td>永久跳转</td>
+</tr>
+<tr>
+<td>302</td>
+<td>临时跳转</td>
+</tr>
+<tr>
+<td>400</td>
+<td>错误请求</td>
+</tr>
+<tr>
+<td>401</td>
+<td>未授权</td>
+</tr>
+<tr>
+<td>403</td>
+<td>禁止访问</td>
+</tr>
+<tr>
+<td>404</td>
+<td>未找到</td>
+</tr>
+<tr>
+<td>500</td>
+<td>服务器错误</td>
+</tr>
+</tbody></table>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  2.载入过程的动画</span><br><span class="line"></span><br><span class="line">  在.load() 之前 $(&#x27;#content&#x27;).html(&#x27;&lt;img...&gt;&#x27;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  3.载入部分内容</span><br><span class="line">  $(&#x27;#content&#x27;).load(URL class or id or tag name )</span><br><span class="line">  如：	$(&#x27;#content&#x27;).load(&#x27;class1.html.specal&#x27;)------意味着该html里只有class=&quot;specal&quot; 的标签才可以被加载</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  4.get/post 提交表单</span><br><span class="line"></span><br><span class="line">  Get:服务器在URL中拾取键值对</span><br><span class="line"></span><br><span class="line">  Post:</span><br><span class="line">    $.ajax(&#123;</span><br><span class="line">    type:&#x27;post&#x27;,</span><br><span class="line">    url:url,</span><br><span class="line">    data:data,</span><br><span class="line">    success:success,</span><br><span class="line">    dataType:dataType</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  post 请求提交数据：</span><br><span class="line">      两种方式：标准\快捷</span><br><span class="line"></span><br><span class="line">        标准：$.post(url,[data],[success],dataType);</span><br><span class="line"></span><br><span class="line">        快捷：$.ajax(&#123;</span><br><span class="line">        url:url,</span><br><span class="line">        data:data,</span><br><span class="line">        success:success,</span><br><span class="line">        dataType:dataType</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  5.操作XML数据</span><br><span class="line"></span><br><span class="line">  a.XML是跨平台的标准</span><br><span class="line">    如何得到xml并解读，展示在html上</span><br><span class="line">      $.ajax(&#123;</span><br><span class="line">    type:&#x27;GET&#x27;,</span><br><span class="line">    url:&quot;xx.xml&quot;,</span><br><span class="line">    dataType:&quot;XML&quot;,</span><br><span class="line">    success:parseXML ---回调函数</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">生成html</span><br><span class="line">  function parseXML(xml)&#123;</span><br><span class="line">    $(xml).find(&quot;Book&quot;).each(function()&#123;</span><br><span class="line">    var author = $(this).attr(&#x27;author&#x27;);</span><br><span class="line">    $(&#x27;&lt;li&gt;&lt;/li&gt;&#x27;).html(&#x27;&lt;b&gt;Author&lt;/b&gt;:&#x27;+author).appendTo(&#x27;#books&#x27;);;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">6.操作JSon数据</span><br><span class="line"></span><br><span class="line">  json是JavaScript的表示法，它允许以键值对的形式创建自己的数据结构</span><br><span class="line"></span><br><span class="line">  a.获取json并生成html</span><br><span class="line"></span><br><span class="line">    $.getJSON();或$.ajax</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    function processJson(data)&#123;</span><br><span class="line">    $.each(data.books,function(i,item));</span><br><span class="line">    &#125;</span><br><span class="line">    接下来要做的跟xml类似，你只需要获取item中的键值来生成html</span><br></pre></td></tr></table></figure></div>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> Jquery 的一些林林总总</li>
+        <li><strong>Author:</strong> obsidiannn</li>
+        <li><strong>Created at
+                :</strong> 2017-05-10 16:52:09</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2025-03-20 00:21:52
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://blog.dadonggua.top/2017/05/10/02jquery_log1/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/Jquery/">#Jquery</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2017/05/27/03spring_data/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">SpringData相关</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2017/04/18/01%E7%BB%88%E4%BA%8E%E6%90%9E%E5%AE%9A%E4%BA%86/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">终于搞定了</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">Jquery 的一些林林总总</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Jquery-%E7%9A%84%E4%B8%80%E4%BA%9B%E6%9E%97%E6%9E%97%E6%80%BB%E6%80%BB"><span class="nav-text">Jquery 的一些林林总总</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Ecookie%EF%BC%88%E8%BF%99%E5%8F%AF%E6%98%AF%E4%BB%96%E5%A8%98%E7%9A%84%E9%87%8D%E7%82%B9%EF%BC%89"><span class="nav-text">关于cookie（这可是他娘的重点）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ajax"><span class="nav-text">Ajax</span></a></li></ol></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2025&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">obsidiannn</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        17 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.2</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
 
 
 	
